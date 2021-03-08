@@ -1,51 +1,64 @@
 import React from 'react';
 import { View } from 'react-native';
-import { ImageWithContent, Button, Text } from '../../../components';
+import { StackScreenProps } from '@react-navigation/stack';
+import styled from 'styled-components/native';
+import {
+  AuthStackParamList,
+  AuthStackScreenName
+} from '../../../navigation/interfaces';
+import {
+  ImageWithContent,
+  Button,
+  Text,
+  TextButton
+} from '../../../components';
 
-const LandingScreen = ({ navigation }: any): JSX.Element => {
+const image =
+  'https://images.pexels.com/photos/6976660/pexels-photo-6976660.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500';
+
+const LandingScreen = ({
+  navigation
+}: StackScreenProps<
+  AuthStackParamList,
+  AuthStackScreenName.LANDING
+>): JSX.Element => {
   return (
-    <ImageWithContent
-      source={{
-        uri:
-          'https://images.pexels.com/photos/6976660/pexels-photo-6976660.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-      }}
-    >
+    <ImageWithContent source={{ uri: image }}>
       <View style={{ flex: 1 }}>
         <View style={{ marginBottom: 40 }}>
-          <Text
-            style={{
-              width: '60%',
-              marginBottom: 16,
-              fontSize: 30,
-              lineHeight: 40
-            }}
-            large
-            bold
-          >
+          <ScreenHeader large bold>
             Empowering the highstreet
-          </Text>
+          </ScreenHeader>
           <Text light>
             Reference site about Lorem Ipsum, giving information on its origins.
           </Text>
         </View>
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            flexGrow: 0.5
-          }}
-        >
+        <ButtonContainer>
           <Button
             style={{ marginBottom: 20 }}
-            onPress={() => navigation.navigate('SIGN_UP')}
+            onPress={() => navigation.navigate(AuthStackScreenName.SIGN_UP)}
           >
             Sign up
           </Button>
-          <Text light>Want to sell on Wherever?</Text>
-        </View>
+          <TextButton onPress={() => alert('Set store signup info')}>
+            Want to sell on Wherever?
+          </TextButton>
+        </ButtonContainer>
       </View>
     </ImageWithContent>
   );
 };
+
+const ScreenHeader = styled(Text)`
+  width: 60%;
+  margin-bottom: 16px;
+  font-size: 30px;
+  line-height: 40px;
+`;
+
+const ButtonContainer = styled.View`
+  align-items: center;
+  justify-content: flex-end;
+`;
 
 export default LandingScreen;

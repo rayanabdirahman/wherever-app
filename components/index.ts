@@ -5,6 +5,7 @@ export { default as BackButton } from './Shared/BackButton';
 export { default as NavTextButton } from './Shared/NavTextButton';
 export { default as Text } from './Shared/Text';
 export { default as Button } from './Shared/Button';
+export { default as TextButton } from './Shared/TextButton';
 
 // layout components
 export { default as ContentContainer } from './Layout/ContentContainer';

@@ -1,8 +1,19 @@
 import React from 'react';
 import { View } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
+import {
+  AuthStackParamList,
+  AuthStackScreenName
+} from '../../../navigation/interfaces';
 import { ScreenContainer, ContentContainer, Text } from '../../../components';
 
-const SignInScreen = (): JSX.Element => {
+const SignInScreen = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  navigation
+}: StackScreenProps<
+  AuthStackParamList,
+  AuthStackScreenName.SIGN_IN
+>): JSX.Element => {
   return (
     <ScreenContainer>
       <ContentContainer>
