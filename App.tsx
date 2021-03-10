@@ -10,9 +10,11 @@ import { Spinner } from './components/';
 import useCachedResources from './hooks/useCachedResources';
 import theme from './constants/Theme';
 import useToast from './hooks/useToast';
+import useAuthGuard from './hooks/useAuthGuard';
 
 function App(): JSX.Element {
   const showToast = useToast();
+  const hasUserSignedIn = useAuthGuard();
 
   React.useEffect(() => {
     showToast();
@@ -20,7 +22,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaProvider>
-      <Navigation isUserSignedIn={false} />
+      <Navigation isUserSignedIn={hasUserSignedIn} />
       <StatusBar
         style="auto"
         backgroundColor="transparent"
