@@ -19,3 +19,12 @@ export const setHasContentRendered = (hasContentRendered: boolean) => (
     payload: { hasContentRendered }
   });
 };
+
+export const setIsLoading = (isLoading: boolean) => (
+  dispatch: ThunkDispatch<unknown, unknown, AnyAction>
+): void => {
+  dispatch({
+    type: NavigationActionType.SET_IS_LOADING,
+    payload: { isLoading }
+  });
+};

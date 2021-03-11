@@ -14,6 +14,7 @@ export type ConfigState = {
 export type NavigationState = {
   isUserSignedIn: boolean;
   hasContentRendered: boolean;
+  isLoading: boolean;
 };
 
 export type SessionState = {

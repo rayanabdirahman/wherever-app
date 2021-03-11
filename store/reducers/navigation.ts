@@ -4,7 +4,8 @@ import { NavigationActionType } from '../actions/types';
 
 const initialState: NavigationState = {
   isUserSignedIn: false,
-  hasContentRendered: false
+  hasContentRendered: false,
+  isLoading: false
 };
 
 export default (state = initialState, action: AnyAction): NavigationState => {
@@ -16,6 +17,10 @@ export default (state = initialState, action: AnyAction): NavigationState => {
     case NavigationActionType.HAS_RENDERED_CONTENT: {
       const { hasContentRendered } = action.payload;
       return { ...state, hasContentRendered };
+    }
+    case NavigationActionType.SET_IS_LOADING: {
+      const { isLoading } = action.payload;
+      return { ...state, isLoading };
     }
     default:
       return state;

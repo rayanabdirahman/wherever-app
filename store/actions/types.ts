@@ -5,7 +5,8 @@ export enum AlertActionType {
 
 export enum NavigationActionType {
   SET_IS_USER_SIGNED_IN = 'SET_IS_USER_SIGNED_IN',
-  HAS_RENDERED_CONTENT = 'HAS_RENDERED_CONTENT'
+  HAS_RENDERED_CONTENT = 'HAS_RENDERED_CONTENT',
+  SET_IS_LOADING = 'SET_IS_LOADING'
 }
 
 export enum AccountActionType {
