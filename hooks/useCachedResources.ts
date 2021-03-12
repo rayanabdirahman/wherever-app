@@ -6,6 +6,7 @@ import {
   Roboto_400Regular,
   Roboto_700Bold
 } from '@expo-google-fonts/roboto';
+import * as SplashScreen from 'expo-splash-screen';
 
 // TODO: cache images
 export default function useCachedResources(): boolean {
@@ -17,6 +18,7 @@ export default function useCachedResources(): boolean {
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
     async function loadResourcesAndDataAsync() {
+      await SplashScreen.preventAutoHideAsync();
       try {
         // Load fonts
         await Font.loadAsync({
@@ -28,6 +30,7 @@ export default function useCachedResources(): boolean {
         console.warn(e);
       } finally {
         setLoadingComplete(true);
+        await SplashScreen.hideAsync();
       }
     }
 

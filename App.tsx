@@ -11,6 +11,7 @@ import useCachedResources from './hooks/useCachedResources';
 import theme from './constants/Theme';
 import useToast from './hooks/useToast';
 import useAuthGuard from './hooks/useAuthGuard';
+import { ActivityIndicator } from 'react-native';
 
 function App(): JSX.Element {
   const showToast = useToast();
@@ -29,15 +30,15 @@ function App(): JSX.Element {
         translucent={true}
       />
       <Toast ref={(ref) => Toast.setRef(ref)} />
+      <Spinner />
     </SafeAreaProvider>
   );
 }
 
 export default function (): JSX.Element {
-  // TODO: set redux loading state
   const isLoadingComplete = useCachedResources();
   if (!isLoadingComplete) {
-    return <Spinner />;
+    return <ActivityIndicator />;
   } else {
     return (
       <Provider store={store}>
