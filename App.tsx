@@ -1,21 +1,25 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components';
 import Toast from 'react-native-toast-message';
 import Navigation from './navigation';
-import { store } from './store';
+import { State, store } from './store';
 import { Spinner } from './components/';
 import useCachedResources from './hooks/useCachedResources';
 import theme from './constants/Theme';
 import useToast from './hooks/useToast';
 import useAuthGuard from './hooks/useAuthGuard';
 import { ActivityIndicator } from 'react-native';
+import { NavigationState } from './store/interfaces';
 
 function App(): JSX.Element {
   const showToast = useToast();
-  const hasUserSignedIn = useAuthGuard();
+  const isAuthCheckComplete = useAuthGuard();
+  const { isUserSignedIn } = useSelector<State, NavigationState>(
+    (state) => state.navigation
+  );
 
   React.useEffect(() => {
     showToast();
@@ -23,7 +27,8 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaProvider>
-      <Navigation isUserSignedIn={false} />
+      {/* check if user is authenticated before using navigation store */}
+      <Navigation isUserSignedIn={isAuthCheckComplete && isUserSignedIn} />
       <StatusBar
         style="auto"
         backgroundColor="transparent"

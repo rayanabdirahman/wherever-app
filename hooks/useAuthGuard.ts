@@ -1,13 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { store } from '../store';
 import { setCurrentUser } from '../store/actions/account';
 import { setIsLoading } from '../store/actions/navigation';
 import logger from '../utilities/logger';
 
 export default function useAuthGuard(): boolean {
   const dispatch = useDispatch();
-  const [hasUserSignedIn, setHasUserSignedIn] = React.useState<boolean>(false);
+  const [isAuthCheckComplete, setAuthCheckComplete] = React.useState(false);
 
   React.useEffect(() => {
     async function checkIfIsAuthorised() {
@@ -19,8 +18,7 @@ export default function useAuthGuard(): boolean {
         // We might want to provide this error information to an error reporting service
         logger.error(`[useAuthGuard] - error when authenticating user: ${e}`);
       } finally {
-        const { isUserSignedIn } = store.getState().navigation;
-        setHasUserSignedIn(isUserSignedIn);
+        setAuthCheckComplete(true);
       }
       dispatch(setIsLoading(false));
       logger.info(`[useAuthGuard] - Authenticating user completed`);
@@ -28,5 +26,5 @@ export default function useAuthGuard(): boolean {
     checkIfIsAuthorised();
   }, []);
 
-  return hasUserSignedIn;
+  return isAuthCheckComplete;
 }
