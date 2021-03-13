@@ -6,6 +6,7 @@ export { default as NavTextButton } from './Shared/NavTextButton';
 export { default as Text } from './Shared/Text';
 export { default as Button } from './Shared/Button';
 export { default as TextButton } from './Shared/TextButton';
+export { TextInputWithIcon } from './Shared/TextInput';
 
 // layout components
 export { default as ContentContainer } from './Layout/ContentContainer';

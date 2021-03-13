@@ -9,7 +9,6 @@ import {
 import * as SplashScreen from 'expo-splash-screen';
 import logger from '../utilities/logger';
 
-// TODO: cache images
 export default function useCachedResources(): boolean {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
 

@@ -1,9 +1,9 @@
 import consola from 'consola';
 
 type Logger = {
-  success(error: string): void;
-  error(error: string): void;
-  info(error: string): void;
+  success(msg: string): void;
+  error(msg: string): void;
+  info(msg: string): void;
 };
 
 const logger: Logger = {
