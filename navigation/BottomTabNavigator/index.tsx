@@ -1,17 +1,25 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text } from 'react-native';
-import { Icon } from '../../components';
+import { Button, Icon } from '../../components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Colors from '../../constants/Colors';
+import { useDispatch } from 'react-redux';
+import { signOutUser } from '../../store/actions/account';
 
-const PlaceHolderScreen = () => (
-  <SafeAreaView>
-    <View>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  </SafeAreaView>
-);
+const PlaceHolderScreen = () => {
+  const dispatch = useDispatch();
+  return (
+    <SafeAreaView>
+      <View>
+        <Text>Open up App.tsx to start working on your app!</Text>
+        <Button success onPress={() => dispatch(signOutUser())}>
+          Sign out
+        </Button>
+      </View>
+    </SafeAreaView>
+  );
+};
 
 const BottomTab = createBottomTabNavigator();
 const BottomTabNavigator = (): JSX.Element => (

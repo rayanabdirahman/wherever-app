@@ -1,9 +1,19 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { LandingScreen, SignInScreen, SignUpScreen } from '../../screens';
+import {
+  LandingScreen,
+  SignInEmailScreen,
+  SignInPasswordScreen,
+  SignUpScreen
+} from '../../screens';
 import { BackButton, NavTextButton } from '../../components';
 import { useNavigation } from '@react-navigation/native';
-import { AuthStackParamList, AuthStackScreenName } from '../interfaces';
+import {
+  AuthStackParamList,
+  AuthStackScreenName,
+  SignInStackParamList,
+  SignInStackScreenName
+} from '../interfaces';
 
 const ScreenOptions = {
   title: '',
@@ -51,12 +61,16 @@ const SignUpNavigator = () => (
   </SignUpStack.Navigator>
 );
 
-const SignInStack = createStackNavigator<AuthStackParamList>();
+const SignInStack = createStackNavigator<SignInStackParamList>();
 const SignInNavigator = () => (
   <SignInStack.Navigator screenOptions={ScreenOptions}>
     <SignInStack.Screen
-      name={AuthStackScreenName.SIGN_IN}
-      component={SignInScreen}
+      name={SignInStackScreenName.SIGN_IN_EMAIL}
+      component={SignInEmailScreen}
+    />
+    <SignInStack.Screen
+      name={SignInStackScreenName.SIGN_IN_PASSWORD}
+      component={SignInPasswordScreen}
     />
   </SignInStack.Navigator>
 );

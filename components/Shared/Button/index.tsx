@@ -7,7 +7,7 @@ import Text from '../Text';
 type Props = DefaultTouchableOpacity['props'] & {
   bold?: boolean;
   disabled?: boolean;
-  blue?: boolean;
+  success?: boolean;
 };
 
 const TouchableOpacity = styled.TouchableOpacity<Props>`
@@ -16,11 +16,11 @@ const TouchableOpacity = styled.TouchableOpacity<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme, disabled, blue }) =>
+  background-color: ${({ theme, disabled, success }) =>
     disabled
       ? theme.color.lightgrey
-      : blue
-      ? theme.color.blue
+      : success
+      ? theme.color.green
       : theme.color.black};
   border-radius: 100px;
 `;
