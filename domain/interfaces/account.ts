@@ -10,10 +10,10 @@ export type UserModel = {
 };
 
 export type SignUpModel = {
-  name: string | null;
-  username: string | null;
-  email: string | null;
-  password: string | null;
+  name: string;
+  username: string;
+  email: string;
+  password: string;
   role?: UserRolesEnum;
 };
 

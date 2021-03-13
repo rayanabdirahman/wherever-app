@@ -4,7 +4,10 @@ import {
   LandingScreen,
   SignInEmailScreen,
   SignInPasswordScreen,
-  SignUpScreen
+  SignUpEmailScreen,
+  SignUpNameScreen,
+  SignUpPasswordScreen,
+  SignUpUsernameScreen
 } from '../../screens';
 import { BackButton, NavTextButton } from '../../components';
 import { useNavigation } from '@react-navigation/native';
@@ -12,7 +15,9 @@ import {
   AuthStackParamList,
   AuthStackScreenName,
   SignInStackParamList,
-  SignInStackScreenName
+  SignInStackScreenName,
+  SignUpStackParamList,
+  SignUpStackScreenName
 } from '../interfaces';
 
 const ScreenOptions = {
@@ -51,12 +56,24 @@ const LandingNavigator = () => {
   );
 };
 
-const SignUpStack = createStackNavigator<AuthStackParamList>();
+const SignUpStack = createStackNavigator<SignUpStackParamList>();
 const SignUpNavigator = () => (
   <SignUpStack.Navigator screenOptions={ScreenOptions}>
     <SignUpStack.Screen
-      name={AuthStackScreenName.SIGN_UP}
-      component={SignUpScreen}
+      name={SignUpStackScreenName.SIGN_UP_EMAIL}
+      component={SignUpEmailScreen}
+    />
+    <SignUpStack.Screen
+      name={SignUpStackScreenName.SIGN_UP_NAME}
+      component={SignUpNameScreen}
+    />
+    <SignUpStack.Screen
+      name={SignUpStackScreenName.SIGN_UP_USERNAME}
+      component={SignUpUsernameScreen}
+    />
+    <SignUpStack.Screen
+      name={SignUpStackScreenName.SIGN_UP_PASSWORD}
+      component={SignUpPasswordScreen}
     />
   </SignUpStack.Navigator>
 );

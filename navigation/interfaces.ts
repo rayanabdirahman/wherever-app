@@ -30,3 +30,18 @@ export enum SignInStackScreenName {
   SIGN_IN_EMAIL = 'SignInEmail',
   SIGN_IN_PASSWORD = 'SignInPassword'
 }
+
+// Sign up screens
+export type SignUpStackParamList = {
+  SignUpEmail: undefined;
+  SignUpName: { email: string };
+  SignUpUsername: { email: string; name: string };
+  SignUpPassword: { email: string; name: string; username: string };
+};
+
+export enum SignUpStackScreenName {
+  SIGN_UP_EMAIL = 'SignUpEmail',
+  SIGN_UP_NAME = 'SignUpName',
+  SIGN_UP_USERNAME = 'SignUpUsername',
+  SIGN_UP_PASSWORD = 'SignUpPassword'
+}
