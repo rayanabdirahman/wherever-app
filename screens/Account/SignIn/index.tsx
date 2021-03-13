@@ -4,9 +4,9 @@ import {
   ScreenContainer,
   ContentContainer,
   Text,
-  Button
+  Button,
+  TextInputWithIcon
 } from '../../../components';
-import { TextInput } from 'react-native-gesture-handler';
 import useSignIn from '../../../hooks/useSignIn';
 
 const SignInScreen = (): JSX.Element => {
@@ -20,20 +20,26 @@ const SignInScreen = (): JSX.Element => {
           </Text>
           <Text light>Shop the stores you love. Discover new favourites.</Text>
         </View>
-        <View style={{ marginTop: 50, marginBottom: 100 }}>
-          <TextInput
-            style={{ marginBottom: 30 }}
+        <View style={{ marginTop: 48, marginBottom: 48 }}>
+          <TextInputWithIcon
+            icon="mail"
             placeholder="email"
+            autoFocus
             onChangeText={(email) => setSignInState({ ...signInState, email })}
           />
-          <TextInput
+
+          <TextInputWithIcon
+            icon="lock"
             placeholder="password"
+            secureTextEntry
             onChangeText={(password) =>
               setSignInState({ ...signInState, password })
             }
           />
         </View>
-        <Button onPress={() => signInUserWithDetails()}>Sign in</Button>
+        <Button blue onPress={() => signInUserWithDetails()}>
+          Sign in
+        </Button>
       </ContentContainer>
     </ScreenContainer>
   );

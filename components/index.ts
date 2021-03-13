@@ -11,6 +11,7 @@ export { TextInputWithIcon } from './Shared/TextInput';
 // layout components
 export { default as ContentContainer } from './Layout/ContentContainer';
 export { default as ScreenContainer } from './Layout/ScreenContainer';
+export { default as KeyboardAvoidingContainer } from './Layout/KeyboardAvoidingContainer';
 
 // template components
 export { default as ImageWithContent } from './Template/ImageWithContent';

@@ -23,7 +23,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaProvider>
-      <Navigation isUserSignedIn={hasUserSignedIn} />
+      <Navigation isUserSignedIn={false} />
       <StatusBar
         style="auto"
         backgroundColor="transparent"
