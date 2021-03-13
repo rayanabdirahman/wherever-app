@@ -9,7 +9,7 @@ import {
   KeyboardAvoidingContainer
 } from '../../../components';
 import { Formik } from 'formik';
-import { signInEmailValidationSchema } from '../../../utilities/validation';
+import { AccountValidator } from '../../../utilities/validation';
 import { StackScreenProps } from '@react-navigation/stack';
 import {
   SignInStackParamList,
@@ -32,7 +32,7 @@ const SignInEmailScreen = ({
           <Text light>Enter your email address to continue</Text>
         </View>
         <Formik
-          validationSchema={signInEmailValidationSchema}
+          validationSchema={AccountValidator.email}
           initialValues={{ email: '' }}
           onSubmit={(values) => {
             navigation.navigate(SignInStackScreenName.SIGN_IN_PASSWORD, {

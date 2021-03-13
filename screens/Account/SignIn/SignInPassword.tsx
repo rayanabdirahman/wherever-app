@@ -10,7 +10,7 @@ import {
 } from '../../../components';
 import useSignIn from '../../../hooks/useSignIn';
 import { Formik } from 'formik';
-import { signInPasswordValidationSchema } from '../../../utilities/validation';
+import { AccountValidator } from '../../../utilities/validation';
 import { StackScreenProps } from '@react-navigation/stack';
 import {
   SignInStackParamList,
@@ -35,7 +35,7 @@ const SignInPasswordScreen = ({
           <Text light>Enter your email address to continue</Text>
         </View>
         <Formik
-          validationSchema={signInPasswordValidationSchema}
+          validationSchema={AccountValidator.password}
           initialValues={{
             ...signInState,
             email,

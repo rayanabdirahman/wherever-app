@@ -14,7 +14,7 @@ import {
   SignUpStackParamList,
   SignUpStackScreenName
 } from '../../../navigation/interfaces';
-import { signUpNameValidationSchema } from '../../../utilities/validation';
+import { AccountValidator } from '../../../utilities/validation';
 
 const SignUpNameScreen = ({
   route,
@@ -34,7 +34,7 @@ const SignUpNameScreen = ({
           <Text light>Add your name to continue.</Text>
         </View>
         <Formik
-          validationSchema={signUpNameValidationSchema}
+          validationSchema={AccountValidator.name}
           initialValues={{ name: '' }}
           onSubmit={(values) => {
             navigation.navigate(SignUpStackScreenName.SIGN_UP_USERNAME, {

@@ -42,6 +42,7 @@ export const signUpUser = (model: SignUpModel) => async (
         type: AlertTypeEnum.ERROR
       })
     );
+    dispatch(setIsLoading(false));
   }
 };
 
@@ -72,6 +73,7 @@ export const signInUser = (model: SignInModel) => async (
         type: AlertTypeEnum.ERROR
       })
     );
+    dispatch(setIsLoading(false));
   }
 };
 
@@ -98,6 +100,8 @@ export const signOutUser = () => async (
     );
     // update isUserSignedIn navigation state
     dispatch(setIsUserSignedIn(true));
+
+    dispatch(setIsLoading(false));
   }
 };
 

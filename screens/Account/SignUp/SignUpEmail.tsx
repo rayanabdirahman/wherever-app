@@ -14,7 +14,7 @@ import {
   SignUpStackParamList,
   SignUpStackScreenName
 } from '../../../navigation/interfaces';
-import { signInEmailValidationSchema } from '../../../utilities/validation';
+import { AccountValidator } from '../../../utilities/validation';
 
 const SignUpEmailScreen = ({
   navigation
@@ -32,7 +32,7 @@ const SignUpEmailScreen = ({
           <Text light>Enter your email address to continue</Text>
         </View>
         <Formik
-          validationSchema={signInEmailValidationSchema}
+          validationSchema={AccountValidator.email}
           initialValues={{ email: '' }}
           onSubmit={(values) => {
             navigation.navigate(SignUpStackScreenName.SIGN_UP_NAME, {

@@ -15,7 +15,7 @@ import {
   SignUpStackParamList,
   SignUpStackScreenName
 } from '../../../navigation/interfaces';
-import { signInPasswordValidationSchema } from '../../../utilities/validation';
+import { AccountValidator } from '../../../utilities/validation';
 
 const SignUpPasswordScreen = ({
   route
@@ -35,7 +35,7 @@ const SignUpPasswordScreen = ({
           <Text light>Your password should be atleast 8 characters.</Text>
         </View>
         <Formik
-          validationSchema={signInPasswordValidationSchema}
+          validationSchema={AccountValidator.password}
           initialValues={{
             ...signUpState,
             email,
