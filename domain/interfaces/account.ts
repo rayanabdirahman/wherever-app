@@ -18,8 +18,8 @@ export type SignUpModel = {
 };
 
 export type SignInModel = {
-  email: string | null;
-  password: string | null;
+  email: string;
+  password: string;
 };
 
 export type JwtPayload = {
