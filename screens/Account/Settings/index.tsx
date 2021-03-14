@@ -1,17 +1,21 @@
 import React from 'react';
 import { View } from 'react-native';
-import { ScreenContainer, ContentContainer, Text } from '../../../components';
+import { useDispatch } from 'react-redux';
+import { ScreenContainer, ContentContainer, Button } from '../../../components';
+import { signOutUser } from '../../../store/actions/account';
 
-const SettingsScreen = (): JSX.Element => (
-  <ScreenContainer>
-    <ContentContainer>
-      <View>
-        <Text large bold>
-          Settings Screen
-        </Text>
-      </View>
-    </ContentContainer>
-  </ScreenContainer>
-);
+const SettingsScreen = (): JSX.Element => {
+  const dispatch = useDispatch();
+  return (
+    <ScreenContainer>
+      <ContentContainer>
+        <View style={{ flex: 0.9 }}></View>
+        <View style={{ width: '50%' }}>
+          <Button onPress={() => dispatch(signOutUser())}>Sign out</Button>
+        </View>
+      </ContentContainer>
+    </ScreenContainer>
+  );
+};
 
 export default SettingsScreen;
