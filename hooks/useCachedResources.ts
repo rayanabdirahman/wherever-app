@@ -6,6 +6,10 @@ import {
   Roboto_400Regular,
   Roboto_700Bold
 } from '@expo-google-fonts/roboto';
+import {
+  MerriweatherSans_400Regular,
+  MerriweatherSans_800ExtraBold
+} from '@expo-google-fonts/merriweather-sans';
 import * as SplashScreen from 'expo-splash-screen';
 import logger from '../utilities/logger';
 
@@ -13,7 +17,12 @@ export default function useCachedResources(): boolean {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
 
   // load custom google font: Montserrat
-  useFonts({ Roboto_400Regular, Roboto_700Bold });
+  useFonts({
+    Roboto_400Regular,
+    Roboto_700Bold,
+    MerriweatherSans_400Regular,
+    MerriweatherSans_800ExtraBold
+  });
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {

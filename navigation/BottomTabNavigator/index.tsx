@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { View, Text } from 'react-native';
 import { Button, Icon, Thumbnail } from '../../components';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -12,8 +13,13 @@ import {
   ProfileStackParamList,
   ProfileStackScreenName
 } from '../interfaces';
-import { createStackNavigator } from '@react-navigation/stack';
 import { store } from '../../store';
+import Fonts from '../../constants/Fonts';
+import {
+  OrdersFeedScreen,
+  SettingsScreen,
+  WishListScreen
+} from '../../screens';
 
 const PlaceHolderScreen = () => {
   const dispatch = useDispatch();
@@ -29,12 +35,41 @@ const PlaceHolderScreen = () => {
   );
 };
 
-const ProfileStack = createStackNavigator<ProfileStackParamList>();
+const ProfileStack = createMaterialTopTabNavigator<ProfileStackParamList>();
 const ProfileNavigator = () => (
-  <ProfileStack.Navigator>
+  <ProfileStack.Navigator
+    initialRouteName={ProfileStackScreenName.ORDERS_FEED}
+    tabBarPosition="top"
+    tabBarOptions={{
+      activeTintColor: Colors.black,
+      inactiveTintColor: Colors.darkgrey,
+      labelStyle: {
+        fontSize: 18,
+        fontFamily: Fonts.serifBold,
+        textTransform: 'none'
+      },
+      indicatorStyle: {
+        backgroundColor: Colors.black
+      },
+      tabStyle: {
+        marginTop: 48
+      }
+    }}
+  >
     <ProfileStack.Screen
-      name={ProfileStackScreenName.PROFILE_SCREEN}
-      component={PlaceHolderScreen}
+      options={{ title: 'Orders' }}
+      name={ProfileStackScreenName.ORDERS_FEED}
+      component={OrdersFeedScreen}
+    />
+    <ProfileStack.Screen
+      options={{ title: 'Wishes' }}
+      name={ProfileStackScreenName.WISH_LIST}
+      component={WishListScreen}
+    />
+    <ProfileStack.Screen
+      options={{ title: 'Settings' }}
+      name={ProfileStackScreenName.SETTINGS}
+      component={SettingsScreen}
     />
   </ProfileStack.Navigator>
 );
@@ -66,8 +101,8 @@ const BottomTabNavigator = (): JSX.Element => (
           const { user } = store.getState().session.payload;
           return (
             <Thumbnail
-              style={{ marginBottom: -3 }}
               small
+              style={{ marginBottom: -3 }}
               source={{ uri: user && user.avatar }}
             />
           );

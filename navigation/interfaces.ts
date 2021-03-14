@@ -59,10 +59,15 @@ export enum BottomTabScreenName {
   PROFILE = 'Profile'
 }
 
+// profile tab screens
 export type ProfileStackParamList = {
-  ProfileScreen: undefined;
+  OrdersFeed: undefined;
+  Settings: undefined;
+  WishList: undefined;
 };
 
 export enum ProfileStackScreenName {
-  PROFILE_SCREEN = 'ProfileScreen'
+  ORDERS_FEED = 'OrdersFeed',
+  SETTINGS = 'Settings',
+  WISH_LIST = 'WishList'
 }
