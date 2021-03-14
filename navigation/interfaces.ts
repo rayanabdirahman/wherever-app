@@ -45,3 +45,24 @@ export enum SignUpStackScreenName {
   SIGN_UP_USERNAME = 'SignUpUsername',
   SIGN_UP_PASSWORD = 'SignUpPassword'
 }
+
+// Bottom tab
+export type BottomTabParamList = {
+  Feed: undefined;
+  Cart: undefined;
+  Profile: undefined;
+};
+
+export enum BottomTabScreenName {
+  FEED = 'Feed',
+  CART = 'Cart',
+  PROFILE = 'Profile'
+}
+
+export type ProfileStackParamList = {
+  ProfileScreen: undefined;
+};
+
+export enum ProfileStackScreenName {
+  PROFILE_SCREEN = 'ProfileScreen'
+}

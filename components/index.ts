@@ -7,6 +7,7 @@ export { default as Text } from './Shared/Text';
 export { default as Button } from './Shared/Button';
 export { default as TextButton } from './Shared/TextButton';
 export { TextInputWithIcon } from './Shared/TextInput';
+export { default as Thumbnail } from './Shared/Thumbnail';
 
 // layout components
 export { default as ContentContainer } from './Layout/ContentContainer';

@@ -1,11 +1,19 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text } from 'react-native';
-import { Button, Icon } from '../../components';
+import { Button, Icon, Thumbnail } from '../../components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Colors from '../../constants/Colors';
 import { useDispatch } from 'react-redux';
 import { signOutUser } from '../../store/actions/account';
+import {
+  BottomTabParamList,
+  BottomTabScreenName,
+  ProfileStackParamList,
+  ProfileStackScreenName
+} from '../interfaces';
+import { createStackNavigator } from '@react-navigation/stack';
+import { store } from '../../store';
 
 const PlaceHolderScreen = () => {
   const dispatch = useDispatch();
@@ -21,17 +29,28 @@ const PlaceHolderScreen = () => {
   );
 };
 
-const BottomTab = createBottomTabNavigator();
+const ProfileStack = createStackNavigator<ProfileStackParamList>();
+const ProfileNavigator = () => (
+  <ProfileStack.Navigator>
+    <ProfileStack.Screen
+      name={ProfileStackScreenName.PROFILE_SCREEN}
+      component={PlaceHolderScreen}
+    />
+  </ProfileStack.Navigator>
+);
+
+const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 const BottomTabNavigator = (): JSX.Element => (
   <BottomTab.Navigator
-    initialRouteName={'Feed'}
+    initialRouteName={BottomTabScreenName.FEED}
     tabBarOptions={{
       activeTintColor: Colors.black,
-      inactiveTintColor: Colors.darkgrey
+      inactiveTintColor: Colors.darkgrey,
+      showLabel: false
     }}
   >
     <BottomTab.Screen
-      name={'Feed'}
+      name={BottomTabScreenName.FEED}
       component={PlaceHolderScreen}
       options={{
         tabBarIcon: ({ color }: { color: string }) => (
@@ -40,12 +59,19 @@ const BottomTabNavigator = (): JSX.Element => (
       }}
     />
     <BottomTab.Screen
-      name={'Profile'}
-      component={PlaceHolderScreen}
+      name={BottomTabScreenName.PROFILE}
+      component={ProfileNavigator}
       options={{
-        tabBarIcon: ({ color }: { color: string }) => (
-          <Icon name="user" color={color} />
-        )
+        tabBarIcon: () => {
+          const { user } = store.getState().session.payload;
+          return (
+            <Thumbnail
+              style={{ marginBottom: -3 }}
+              small
+              source={{ uri: user && user.avatar }}
+            />
+          );
+        }
       }}
     />
   </BottomTab.Navigator>

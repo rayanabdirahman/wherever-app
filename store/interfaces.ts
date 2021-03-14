@@ -19,5 +19,5 @@ export type NavigationState = {
 
 export type SessionState = {
   token: string | null;
-  payload: JwtPayload | null;
+  payload: JwtPayload;
 };
