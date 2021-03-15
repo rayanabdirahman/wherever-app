@@ -8,6 +8,7 @@ export { default as Button } from './Shared/Button';
 export { default as TextButton } from './Shared/TextButton';
 export { TextInputWithIcon } from './Shared/TextInput';
 export { default as Thumbnail } from './Shared/Thumbnail';
+export { default as ImageGrid } from './Shared/ImageGrid';
 
 // layout components
 export { default as ContentContainer } from './Layout/ContentContainer';
