@@ -2,16 +2,16 @@ import React from 'react';
 import { View } from 'react-native';
 import { ScreenContainer, ContentContainer, Text } from '../../../components';
 
-const OrdersScreen = (): JSX.Element => (
+const ProfileScreen = (): JSX.Element => (
   <ScreenContainer>
     <ContentContainer>
       <View>
         <Text lg bold>
-          Orders Screen
+          Profile Screen
         </Text>
       </View>
     </ContentContainer>
   </ScreenContainer>
 );
 
-export default OrdersScreen;
+export default ProfileScreen;

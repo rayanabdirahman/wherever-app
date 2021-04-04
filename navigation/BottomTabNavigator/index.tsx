@@ -1,25 +1,33 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { View, Text } from 'react-native';
-import { Button, Icon, Thumbnail } from '../../components';
+import { BackButton, Button, Icon } from '../../components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Colors from '../../constants/Colors';
 import { useDispatch } from 'react-redux';
 import { signOutUser } from '../../store/actions/account';
 import {
+  AccountStackParamList,
+  AccountStackScreenName,
   BottomTabParamList,
-  BottomTabScreenName,
-  ProfileStackParamList,
-  ProfileStackScreenName
+  BottomTabScreenName
 } from '../interfaces';
-import { store } from '../../store';
-import Fonts from '../../constants/Fonts';
 import {
-  OrdersFeedScreen,
-  SettingsScreen,
-  WishListScreen
+  AddressesScreen,
+  OrdersScreen,
+  PaymentsScreen,
+  ProfileScreen,
+  SettingsScreen
 } from '../../screens';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const ScreenOptions = {
+  title: '',
+  headerShown: true,
+  headerBackTitle: ' ',
+  headerBackImage: () => <BackButton />,
+  headerStyle: { shadowOpacity: 0 }
+};
 
 const PlaceHolderScreen = () => {
   const dispatch = useDispatch();
@@ -35,43 +43,38 @@ const PlaceHolderScreen = () => {
   );
 };
 
-const ProfileStack = createMaterialTopTabNavigator<ProfileStackParamList>();
-const ProfileNavigator = () => (
-  <ProfileStack.Navigator
-    initialRouteName={ProfileStackScreenName.ORDERS_FEED}
-    tabBarPosition="top"
-    tabBarOptions={{
-      activeTintColor: Colors.black,
-      inactiveTintColor: Colors.darkgrey,
-      labelStyle: {
-        fontSize: 18,
-        fontFamily: Fonts.serifBold,
-        textTransform: 'none'
-      },
-      indicatorStyle: {
-        backgroundColor: Colors.black
-      },
-      tabStyle: {
-        marginTop: 48
-      }
-    }}
+const AccountStack = createStackNavigator<AccountStackParamList>();
+const AccountNavigator = () => (
+  <AccountStack.Navigator
+    initialRouteName={AccountStackScreenName.SETTINGS}
+    screenOptions={ScreenOptions}
   >
-    <ProfileStack.Screen
-      options={{ title: 'Orders' }}
-      name={ProfileStackScreenName.ORDERS_FEED}
-      component={OrdersFeedScreen}
-    />
-    <ProfileStack.Screen
-      options={{ title: 'Wishes' }}
-      name={ProfileStackScreenName.WISH_LIST}
-      component={WishListScreen}
-    />
-    <ProfileStack.Screen
-      options={{ title: 'Settings' }}
-      name={ProfileStackScreenName.SETTINGS}
+    <AccountStack.Screen
+      options={{ title: 'Account' }}
+      name={AccountStackScreenName.SETTINGS}
       component={SettingsScreen}
     />
-  </ProfileStack.Navigator>
+    <AccountStack.Screen
+      options={{ title: 'Profile' }}
+      name={AccountStackScreenName.PROFILE}
+      component={ProfileScreen}
+    />
+    <AccountStack.Screen
+      options={{ title: 'Orders' }}
+      name={AccountStackScreenName.ORDERS}
+      component={OrdersScreen}
+    />
+    <AccountStack.Screen
+      options={{ title: 'Addresses' }}
+      name={AccountStackScreenName.ADDRESSES}
+      component={AddressesScreen}
+    />
+    <AccountStack.Screen
+      options={{ title: 'Payments' }}
+      name={AccountStackScreenName.PAYMENTS}
+      component={PaymentsScreen}
+    />
+  </AccountStack.Navigator>
 );
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -94,19 +97,12 @@ const BottomTabNavigator = (): JSX.Element => (
       }}
     />
     <BottomTab.Screen
-      name={BottomTabScreenName.PROFILE}
-      component={ProfileNavigator}
+      name={BottomTabScreenName.ACCOUNT}
+      component={AccountNavigator}
       options={{
-        tabBarIcon: () => {
-          const { user } = store.getState().session.payload;
-          return (
-            <Thumbnail
-              small
-              style={{ marginBottom: -3 }}
-              source={{ uri: user && user.avatar }}
-            />
-          );
-        }
+        tabBarIcon: ({ color }: { color: string }) => (
+          <Icon name="user" color={color} />
+        )
       }}
     />
   </BottomTab.Navigator>

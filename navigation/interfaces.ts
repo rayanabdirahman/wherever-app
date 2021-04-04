@@ -50,24 +50,28 @@ export enum SignUpStackScreenName {
 export type BottomTabParamList = {
   Feed: undefined;
   Cart: undefined;
-  Profile: undefined;
+  Account: undefined;
 };
 
 export enum BottomTabScreenName {
   FEED = 'Feed',
   CART = 'Cart',
-  PROFILE = 'Profile'
+  ACCOUNT = 'Account'
 }
 
-// profile tab screens
-export type ProfileStackParamList = {
-  OrdersFeed: undefined;
+// Account tab screens
+export type AccountStackParamList = {
   Settings: undefined;
-  WishList: undefined;
+  Addresses: undefined;
+  Orders: undefined;
+  Profile: undefined;
+  Payments: undefined;
 };
 
-export enum ProfileStackScreenName {
-  ORDERS_FEED = 'OrdersFeed',
+export enum AccountStackScreenName {
   SETTINGS = 'Settings',
-  WISH_LIST = 'WishList'
+  ADDRESSES = 'Addresses',
+  ORDERS = 'Orders',
+  PROFILE = 'Profile',
+  PAYMENTS = 'Payments'
 }
