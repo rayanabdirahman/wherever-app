@@ -1,23 +1,28 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text } from 'react-native';
-import { BackButton, Button, Icon } from '../../components';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { BackButton, Icon } from '../../components';
 import Colors from '../../constants/Colors';
-import { useDispatch } from 'react-redux';
-import { signOutUser } from '../../store/actions/account';
 import {
   AccountStackParamList,
   AccountStackScreenName,
   BottomTabParamList,
-  BottomTabScreenName
+  BottomTabScreenName,
+  CartStackParamList,
+  CartStackScreenName,
+  FeedStackParamList,
+  FeedStackScreenName,
+  StoresStackParamList,
+  StoresStackScreenName
 } from '../interfaces';
 import {
   AddressesScreen,
+  CartScreen,
+  FeedScreen,
   OrdersScreen,
   PaymentsScreen,
   ProfileScreen,
-  SettingsScreen
+  SettingsScreen,
+  StoresScreen
 } from '../../screens';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -29,20 +34,6 @@ const ScreenOptions = {
   headerStyle: { shadowOpacity: 0 }
 };
 
-const PlaceHolderScreen = () => {
-  const dispatch = useDispatch();
-  return (
-    <SafeAreaView>
-      <View>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <Button success onPress={() => dispatch(signOutUser())}>
-          Sign out
-        </Button>
-      </View>
-    </SafeAreaView>
-  );
-};
-
 const AccountStack = createStackNavigator<AccountStackParamList>();
 const AccountNavigator = () => (
   <AccountStack.Navigator
@@ -50,7 +41,7 @@ const AccountNavigator = () => (
     screenOptions={ScreenOptions}
   >
     <AccountStack.Screen
-      options={{ title: 'Account' }}
+      options={{ headerShown: false }}
       name={AccountStackScreenName.SETTINGS}
       component={SettingsScreen}
     />
@@ -77,6 +68,53 @@ const AccountNavigator = () => (
   </AccountStack.Navigator>
 );
 
+const FeedStack = createStackNavigator<FeedStackParamList>();
+const FeedNavigator = () => (
+  <FeedStack.Navigator
+    initialRouteName={FeedStackScreenName.FEED}
+    screenOptions={ScreenOptions}
+  >
+    <FeedStack.Screen
+      options={{ headerShown: false }}
+      name={FeedStackScreenName.FEED}
+      component={FeedScreen}
+    />
+    <FeedStack.Screen
+      options={{ title: 'Comments' }}
+      name={FeedStackScreenName.COMMENTS}
+      component={ProfileScreen}
+    />
+  </FeedStack.Navigator>
+);
+
+const StoresStack = createStackNavigator<StoresStackParamList>();
+const StoresNavigator = () => (
+  <StoresStack.Navigator
+    initialRouteName={StoresStackScreenName.STORES}
+    screenOptions={ScreenOptions}
+  >
+    <StoresStack.Screen
+      options={{ headerShown: false }}
+      name={StoresStackScreenName.STORES}
+      component={StoresScreen}
+    />
+  </StoresStack.Navigator>
+);
+
+const CartStack = createStackNavigator<CartStackParamList>();
+const CartNavigator = () => (
+  <CartStack.Navigator
+    initialRouteName={CartStackScreenName.CART}
+    screenOptions={ScreenOptions}
+  >
+    <CartStack.Screen
+      options={{ headerShown: false }}
+      name={CartStackScreenName.CART}
+      component={CartScreen}
+    />
+  </CartStack.Navigator>
+);
+
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 const BottomTabNavigator = (): JSX.Element => (
   <BottomTab.Navigator
@@ -89,10 +127,28 @@ const BottomTabNavigator = (): JSX.Element => (
   >
     <BottomTab.Screen
       name={BottomTabScreenName.FEED}
-      component={PlaceHolderScreen}
+      component={FeedNavigator}
       options={{
         tabBarIcon: ({ color }: { color: string }) => (
           <Icon name="earth" color={color} />
+        )
+      }}
+    />
+    <BottomTab.Screen
+      name={BottomTabScreenName.STORES}
+      component={StoresNavigator}
+      options={{
+        tabBarIcon: ({ color }: { color: string }) => (
+          <Icon name="isv" color={color} />
+        )
+      }}
+    />
+    <BottomTab.Screen
+      name={BottomTabScreenName.CART}
+      component={CartNavigator}
+      options={{
+        tabBarIcon: ({ color }: { color: string }) => (
+          <Icon type="Feather" name="shopping-bag" color={color} />
         )
       }}
     />

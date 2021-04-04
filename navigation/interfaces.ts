@@ -49,12 +49,14 @@ export enum SignUpStackScreenName {
 // Bottom tab
 export type BottomTabParamList = {
   Feed: undefined;
+  Stores: undefined;
   Cart: undefined;
   Account: undefined;
 };
 
 export enum BottomTabScreenName {
   FEED = 'Feed',
+  STORES = 'Stores',
   CART = 'Cart',
   ACCOUNT = 'Account'
 }
@@ -74,4 +76,33 @@ export enum AccountStackScreenName {
   ORDERS = 'Orders',
   PROFILE = 'Profile',
   PAYMENTS = 'Payments'
+}
+
+// Feed tab screens
+export type FeedStackParamList = {
+  Feed: undefined;
+  Comments: undefined;
+};
+
+export enum FeedStackScreenName {
+  FEED = 'Feed',
+  COMMENTS = 'Comments'
+}
+
+// Stores tab screens
+export type StoresStackParamList = {
+  Stores: undefined;
+};
+
+export enum StoresStackScreenName {
+  STORES = 'Stores'
+}
+
+// Cart tab screens
+export type CartStackParamList = {
+  Cart: undefined;
+};
+
+export enum CartStackScreenName {
+  CART = 'Cart'
 }

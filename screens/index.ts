@@ -17,3 +17,12 @@ export { default as SignUpEmailScreen } from './Account/SignUp/SignUpEmail';
 export { default as SignUpNameScreen } from './Account/SignUp/SignUpName';
 export { default as SignUpUsernameScreen } from './Account/SignUp/SignUpUsername';
 export { default as SignUpPasswordScreen } from './Account/SignUp/SignUpPassword';
+
+// social screens
+export { default as FeedScreen } from './Social/Feed';
+
+// stores screens
+export { default as StoresScreen } from './Stores/Stores';
+
+// cart screens
+export { default as CartScreen } from './Cart/Cart';
