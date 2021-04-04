@@ -5,8 +5,8 @@ import {
   ContentContainer,
   Text,
   Button,
-  TextInputWithIcon,
-  KeyboardAvoidingContainer
+  KeyboardAvoidingContainer,
+  TextInput
 } from '../../../components';
 import { Formik } from 'formik';
 import { AccountValidator } from '../../../utilities/validation';
@@ -15,6 +15,7 @@ import {
   SignInStackParamList,
   SignInStackScreenName
 } from '../../../navigation/interfaces';
+import styled from 'styled-components/native';
 
 const SignInEmailScreen = ({
   navigation
@@ -26,7 +27,7 @@ const SignInEmailScreen = ({
     <ScreenContainer>
       <ContentContainer>
         <View>
-          <Text large bold>
+          <Text lg bold>
             Welcome back!
           </Text>
           <Text light>Enter your email address to continue</Text>
@@ -50,9 +51,8 @@ const SignInEmailScreen = ({
             isValid
           }) => (
             <KeyboardAvoidingContainer>
-              <View style={{ marginTop: 48, marginBottom: 48 }}>
-                <TextInputWithIcon
-                  icon="mail"
+              <InputContainer>
+                <TextInput
                   placeholder="email"
                   autoFocus
                   onBlur={handleBlur('email')}
@@ -63,13 +63,12 @@ const SignInEmailScreen = ({
                 />
 
                 <Button
-                  success
                   disabled={!(isValid && dirty)}
                   onPress={() => handleSubmit()}
                 >
                   Continue
                 </Button>
-              </View>
+              </InputContainer>
             </KeyboardAvoidingContainer>
           )}
         </Formik>
@@ -77,5 +76,10 @@ const SignInEmailScreen = ({
     </ScreenContainer>
   );
 };
+
+const InputContainer = styled.View`
+  margin-top: 48px;
+  margin-bottom: 48px;
+`;
 
 export default SignInEmailScreen;

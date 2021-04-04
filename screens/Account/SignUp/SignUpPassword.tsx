@@ -2,13 +2,14 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { Formik } from 'formik';
 import React from 'react';
 import { View } from 'react-native';
+import styled from 'styled-components/native';
 import {
   Button,
   ContentContainer,
   KeyboardAvoidingContainer,
   ScreenContainer,
   Text,
-  TextInputWithIcon
+  TextInput
 } from '../../../components';
 import useSignUp from '../../../hooks/useSignUp';
 import {
@@ -29,7 +30,7 @@ const SignUpPasswordScreen = ({
     <ScreenContainer>
       <ContentContainer>
         <View>
-          <Text large bold>
+          <Text lg bold>
             Create a password
           </Text>
           <Text light>Your password should be atleast 8 characters.</Text>
@@ -55,9 +56,8 @@ const SignUpPasswordScreen = ({
             isValid
           }) => (
             <KeyboardAvoidingContainer>
-              <View style={{ marginTop: 48, marginBottom: 48 }}>
-                <TextInputWithIcon
-                  icon="lock"
+              <InputContainer>
+                <TextInput
                   placeholder="password"
                   autoFocus
                   onChangeText={handleChange('password')}
@@ -68,13 +68,12 @@ const SignUpPasswordScreen = ({
                 />
 
                 <Button
-                  success
                   disabled={!(isValid && dirty)}
                   onPress={() => handleSubmit()}
                 >
                   Sign up
                 </Button>
-              </View>
+              </InputContainer>
             </KeyboardAvoidingContainer>
           )}
         </Formik>
@@ -82,5 +81,10 @@ const SignUpPasswordScreen = ({
     </ScreenContainer>
   );
 };
+
+const InputContainer = styled.View`
+  margin-top: 48px;
+  margin-bottom: 48px;
+`;
 
 export default SignUpPasswordScreen;

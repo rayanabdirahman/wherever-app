@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import styled from 'styled-components/native';
 import {
@@ -7,14 +6,12 @@ import {
   AuthStackScreenName
 } from '../../../navigation/interfaces';
 import {
-  ImageWithContent,
   Button,
   Text,
-  TextButton
+  TextButton,
+  ContentContainer,
+  ScreenContainer
 } from '../../../components';
-
-const image =
-  'https://images.pexels.com/photos/6976660/pexels-photo-6976660.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500';
 
 const LandingScreen = ({
   navigation
@@ -23,42 +20,54 @@ const LandingScreen = ({
   AuthStackScreenName.LANDING
 >): JSX.Element => {
   return (
-    <ImageWithContent source={{ uri: image }}>
-      <View style={{ flex: 1 }}>
-        <View style={{ marginBottom: 40 }}>
-          <ScreenHeader large bold>
-            Empowering the highstreet
-          </ScreenHeader>
-          <Text light>
-            Reference site about Lorem Ipsum, giving information on its origins.
+    <ScreenContainer>
+      <ContentContainer>
+        <HeadingContainer>
+          <Text lg bold center>
+            Shopping, but better
           </Text>
-        </View>
-        <ButtonContainer>
+          <Text light center>
+            Shop all your favourite stores from one place
+          </Text>
+        </HeadingContainer>
+
+        <LinksContainer>
           <Button
-            style={{ marginBottom: 20 }}
             onPress={() => navigation.navigate(AuthStackScreenName.SIGN_UP)}
           >
-            Sign up
+            Create an account
           </Button>
-          <TextButton onPress={() => alert('Set store signup info')}>
-            Want to sell on Wherever?
-          </TextButton>
-        </ButtonContainer>
-      </View>
-    </ImageWithContent>
+          <TextButtonContainer>
+            <Text>Already have an account? </Text>
+            <TextButton
+              brand
+              bold
+              onPress={() => navigation.navigate(AuthStackScreenName.SIGN_IN)}
+            >
+              Sign in
+            </TextButton>
+          </TextButtonContainer>
+        </LinksContainer>
+      </ContentContainer>
+    </ScreenContainer>
   );
 };
 
-const ScreenHeader = styled(Text)`
-  width: 60%;
-  margin-bottom: 16px;
-  font-size: 30px;
-  line-height: 40px;
+const HeadingContainer = styled.View`
+  align-items: center;
+  margin-top: 56px;
 `;
 
-const ButtonContainer = styled.View`
+const LinksContainer = styled.View`
   align-items: center;
   justify-content: flex-end;
+  flex: 0.9;
+`;
+
+const TextButtonContainer = styled.View`
+  align-items: center;
+  flex-direction: row;
+  margin-top: 16px;
 `;
 
 export default LandingScreen;

@@ -1,5 +1,5 @@
 // account screens
-export { default as LandingScreen } from './Account/Landing';
+export { default as LandingScreen } from './Account/Landing/index';
 export { default as OrdersFeedScreen } from './Account/Orders';
 export { default as SettingsScreen } from './Account/Settings';
 export { default as WishListScreen } from './Account/WishList';

@@ -2,13 +2,14 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { Formik } from 'formik';
 import React from 'react';
 import { View } from 'react-native';
+import styled from 'styled-components/native';
 import {
   Button,
   ContentContainer,
   KeyboardAvoidingContainer,
   ScreenContainer,
   Text,
-  TextInputWithIcon
+  TextInput
 } from '../../../components';
 import {
   SignUpStackParamList,
@@ -26,7 +27,7 @@ const SignUpEmailScreen = ({
     <ScreenContainer>
       <ContentContainer>
         <View>
-          <Text large bold>
+          <Text lg bold>
             Let's get started!
           </Text>
           <Text light>Enter your email address to continue</Text>
@@ -50,9 +51,8 @@ const SignUpEmailScreen = ({
             isValid
           }) => (
             <KeyboardAvoidingContainer>
-              <View style={{ marginTop: 48, marginBottom: 48 }}>
-                <TextInputWithIcon
-                  icon="mail"
+              <InputContainer>
+                <TextInput
                   placeholder="email"
                   autoFocus
                   onBlur={handleBlur('email')}
@@ -63,13 +63,12 @@ const SignUpEmailScreen = ({
                 />
 
                 <Button
-                  success
                   disabled={!(isValid && dirty)}
                   onPress={() => handleSubmit()}
                 >
                   Continue
                 </Button>
-              </View>
+              </InputContainer>
             </KeyboardAvoidingContainer>
           )}
         </Formik>
@@ -77,5 +76,10 @@ const SignUpEmailScreen = ({
     </ScreenContainer>
   );
 };
+
+const InputContainer = styled.View`
+  margin-top: 48px;
+  margin-bottom: 48px;
+`;
 
 export default SignUpEmailScreen;

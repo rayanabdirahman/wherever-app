@@ -3,25 +3,19 @@ import { AntDesign, Feather } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import {
   useFonts,
-  Roboto_400Regular,
-  Roboto_700Bold
-} from '@expo-google-fonts/roboto';
-import {
-  MerriweatherSans_400Regular,
-  MerriweatherSans_800ExtraBold
-} from '@expo-google-fonts/merriweather-sans';
+  Poppins_400Regular,
+  Poppins_600SemiBold
+} from '@expo-google-fonts/poppins';
 import * as SplashScreen from 'expo-splash-screen';
 import logger from '../utilities/logger';
 
 export default function useCachedResources(): boolean {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
 
-  // load custom google font: Montserrat
+  // load custom google fonts
   useFonts({
-    Roboto_400Regular,
-    Roboto_700Bold,
-    MerriweatherSans_400Regular,
-    MerriweatherSans_800ExtraBold
+    Poppins_400Regular,
+    Poppins_600SemiBold
   });
 
   // Load any resources or data that we need prior to rendering the app

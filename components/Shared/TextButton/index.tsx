@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 type Props = DefaultTouchableOpacity['props'] & {
   bold?: boolean;
   light?: boolean;
+  brand?: boolean;
 };
 
 const Button = styled.TouchableOpacity<DefaultTouchableOpacity['props']>`
@@ -17,8 +18,8 @@ const Text = styled.Text<Props>`
   font-size: 16px;
   font-family: ${({ theme, bold }) =>
     bold ? theme.font.bold : theme.font.regular};
-  color: ${({ theme, light }) =>
-    light ? theme.color.white : theme.color.darkgrey};
+  color: ${({ theme, light, brand }) =>
+    light ? theme.color.white : brand ? theme.color.brand : theme.color.black};
 `;
 
 const TextButton = (props: Props): JSX.Element => (

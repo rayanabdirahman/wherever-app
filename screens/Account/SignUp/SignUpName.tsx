@@ -2,13 +2,14 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { Formik } from 'formik';
 import React from 'react';
 import { View } from 'react-native';
+import styled from 'styled-components/native';
 import {
   Button,
   ContentContainer,
   KeyboardAvoidingContainer,
   ScreenContainer,
   Text,
-  TextInputWithIcon
+  TextInput
 } from '../../../components';
 import {
   SignUpStackParamList,
@@ -28,7 +29,7 @@ const SignUpNameScreen = ({
     <ScreenContainer>
       <ContentContainer>
         <View>
-          <Text large bold>
+          <Text lg bold>
             What's your name?
           </Text>
           <Text light>Add your name to continue.</Text>
@@ -53,9 +54,8 @@ const SignUpNameScreen = ({
             isValid
           }) => (
             <KeyboardAvoidingContainer>
-              <View style={{ marginTop: 48, marginBottom: 48 }}>
-                <TextInputWithIcon
-                  icon="user"
+              <InputContainer>
+                <TextInput
                   placeholder="name"
                   autoFocus
                   onBlur={handleBlur('name')}
@@ -65,13 +65,12 @@ const SignUpNameScreen = ({
                 />
 
                 <Button
-                  success
                   disabled={!(isValid && dirty)}
                   onPress={() => handleSubmit()}
                 >
                   Continue
                 </Button>
-              </View>
+              </InputContainer>
             </KeyboardAvoidingContainer>
           )}
         </Formik>
@@ -79,5 +78,10 @@ const SignUpNameScreen = ({
     </ScreenContainer>
   );
 };
+
+const InputContainer = styled.View`
+  margin-top: 48px;
+  margin-bottom: 48px;
+`;
 
 export default SignUpNameScreen;

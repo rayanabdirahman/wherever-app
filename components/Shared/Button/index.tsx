@@ -12,7 +12,7 @@ type Props = DefaultTouchableOpacity['props'] & {
 
 const TouchableOpacity = styled.TouchableOpacity<Props>`
   width: 100%;
-  padding: 24px 0;
+  padding: 10px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +22,7 @@ const TouchableOpacity = styled.TouchableOpacity<Props>`
       : success
       ? theme.color.green
       : theme.color.black};
-  border-radius: 100px;
+  border-radius: 4px;
 `;
 
 const Button = (props: Props): JSX.Element => (

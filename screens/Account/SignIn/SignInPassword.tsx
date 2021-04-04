@@ -5,8 +5,8 @@ import {
   ContentContainer,
   Text,
   Button,
-  TextInputWithIcon,
-  KeyboardAvoidingContainer
+  KeyboardAvoidingContainer,
+  TextInput
 } from '../../../components';
 import useSignIn from '../../../hooks/useSignIn';
 import { Formik } from 'formik';
@@ -16,6 +16,7 @@ import {
   SignInStackParamList,
   SignInStackScreenName
 } from '../../../navigation/interfaces';
+import styled from 'styled-components/native';
 
 const SignInPasswordScreen = ({
   route
@@ -29,10 +30,10 @@ const SignInPasswordScreen = ({
     <ScreenContainer>
       <ContentContainer>
         <View>
-          <Text large bold>
+          <Text lg bold>
             Password verification
           </Text>
-          <Text light>Enter your email address to continue</Text>
+          <Text light>Enter your password to sign in</Text>
         </View>
         <Formik
           validationSchema={AccountValidator.password}
@@ -53,9 +54,8 @@ const SignInPasswordScreen = ({
             isValid
           }) => (
             <KeyboardAvoidingContainer>
-              <View style={{ marginTop: 48, marginBottom: 48 }}>
-                <TextInputWithIcon
-                  icon="lock"
+              <InputContainer>
+                <TextInput
                   placeholder="password"
                   autoFocus
                   onChangeText={handleChange('password')}
@@ -66,13 +66,12 @@ const SignInPasswordScreen = ({
                 />
 
                 <Button
-                  success
                   disabled={!(isValid && dirty)}
                   onPress={() => handleSubmit()}
                 >
                   Sign in
                 </Button>
-              </View>
+              </InputContainer>
             </KeyboardAvoidingContainer>
           )}
         </Formik>
@@ -80,5 +79,10 @@ const SignInPasswordScreen = ({
     </ScreenContainer>
   );
 };
+
+const InputContainer = styled.View`
+  margin-top: 48px;
+  margin-bottom: 48px;
+`;
 
 export default SignInPasswordScreen;

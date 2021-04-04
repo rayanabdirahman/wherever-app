@@ -25,7 +25,7 @@ const ScreenOptions = {
   headerShown: true,
   headerBackTitle: ' ',
   headerBackImage: () => <BackButton />,
-  headerStyle: { shadowOpacity: 0, height: 150 }
+  headerStyle: { shadowOpacity: 0 }
 };
 
 const LandingStack = createStackNavigator<AuthStackParamList>();
@@ -36,16 +36,16 @@ const LandingNavigator = () => {
       screenOptions={{
         ...ScreenOptions,
         headerTransparent: true,
-        headerStyle: { height: 120 },
-        headerRight: () => (
-          <NavTextButton
-            light
-            bold
-            onPress={() => navigation.navigate(AuthStackScreenName.SIGN_IN)}
-          >
-            SIGN IN
-          </NavTextButton>
-        )
+        headerStyle: { height: 120 }
+        // headerRight: () => (
+        //   <NavTextButton
+        //     light
+        //     bold
+        //     onPress={() => navigation.navigate(AuthStackScreenName.SIGN_IN)}
+        //   >
+        //     SIGN IN
+        //   </NavTextButton>
+        // )
       }}
     >
       <LandingStack.Screen

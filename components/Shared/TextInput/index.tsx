@@ -10,7 +10,7 @@ import Text from '../Text';
 
 type Props = DefaultTextInput['props'] &
   DefaultView['props'] & {
-    icon: string;
+    icon?: string;
     error?: string | boolean;
   };
 
@@ -21,6 +21,19 @@ const Container = styled.View<DefaultView['props']>`
   border-bottom-color: ${({ theme }) => theme.color.lightgrey};
   padding-bottom: 16px;
 `;
+
+export const TextInput = (props: Props): JSX.Element => (
+  <DefaultView style={{ marginBottom: 48 }}>
+    <Container {...props}>
+      <DefaultTextInput style={{ width: '100%' }} {...props} />
+    </Container>
+    {props.error && (
+      <Text style={{ fontSize: 10, marginTop: 16, color: Colors.red }}>
+        {props.error}
+      </Text>
+    )}
+  </DefaultView>
+);
 
 export const TextInputWithIcon = (props: Props): JSX.Element => (
   <DefaultView style={{ marginBottom: 48 }}>

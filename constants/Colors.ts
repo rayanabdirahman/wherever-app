@@ -1,4 +1,5 @@
 export default {
+  brand: '#FD1241',
   black: '#14121E',
   white: '#FFF',
   blue: '#0001FD',
