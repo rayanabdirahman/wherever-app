@@ -23,6 +23,7 @@ export { default as FeedScreen } from './Social/Feed';
 
 // stores screens
 export { default as StoresScreen } from './Stores/Stores';
+export { default as StoreScreen } from './Stores/Store';
 
 // cart screens
 export { default as CartScreen } from './Cart/Cart';

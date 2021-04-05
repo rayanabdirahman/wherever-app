@@ -1,10 +1,15 @@
 import React from 'react';
+import { StackScreenProps } from '@react-navigation/stack';
 import { FlatList, View } from 'react-native';
 import {
   ScreenContainer,
   ContentContainer,
   ThumbnailWithText
 } from '../../../components';
+import {
+  StoresStackParamList,
+  StoresStackScreenName
+} from '../../../navigation/interfaces';
 
 const stores = [
   {
@@ -21,7 +26,12 @@ const stores = [
   }
 ];
 
-const StoresScreen = (): JSX.Element => (
+const StoresScreen = ({
+  navigation
+}: StackScreenProps<
+  StoresStackParamList,
+  StoresStackScreenName.STORES
+>): JSX.Element => (
   <ScreenContainer>
     <ContentContainer>
       <View>
@@ -33,7 +43,11 @@ const StoresScreen = (): JSX.Element => (
           }
           renderItem={({ item }) => (
             <ThumbnailWithText
-              onPress={() => alert('hello thumbnail')}
+              onPress={() =>
+                navigation.navigate(StoresStackScreenName.STORE, {
+                  storeId: item._id
+                })
+              }
               heading={item.name}
               source={{ uri: item.image }}
             />

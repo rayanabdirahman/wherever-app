@@ -92,10 +92,12 @@ export enum FeedStackScreenName {
 // Stores tab screens
 export type StoresStackParamList = {
   Stores: undefined;
+  Store: { storeId: string };
 };
 
 export enum StoresStackScreenName {
-  STORES = 'Stores'
+  STORES = 'Stores',
+  STORE = 'Store'
 }
 
 // Cart tab screens

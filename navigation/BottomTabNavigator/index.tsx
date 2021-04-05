@@ -22,6 +22,7 @@ import {
   PaymentsScreen,
   ProfileScreen,
   SettingsScreen,
+  StoreScreen,
   StoresScreen
 } from '../../screens';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -97,6 +98,10 @@ const StoresNavigator = () => (
       options={{ headerShown: false }}
       name={StoresStackScreenName.STORES}
       component={StoresScreen}
+    />
+    <StoresStack.Screen
+      name={StoresStackScreenName.STORE}
+      component={StoreScreen}
     />
   </StoresStack.Navigator>
 );
