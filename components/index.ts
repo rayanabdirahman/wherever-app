@@ -8,7 +8,7 @@ export { default as Button } from './Shared/Button';
 export { default as TextButton } from './Shared/TextButton';
 export { TextInputWithIcon, TextInput } from './Shared/TextInput';
 export { ListItemWithIcon, ListItem } from './Shared/ListItem';
-export { default as Thumbnail } from './Shared/Thumbnail';
+export { ThumbnailWithText } from './Shared/Thumbnail';
 export { default as ImageGrid } from './Shared/ImageGrid';
 
 // layout components
