@@ -81,11 +81,15 @@ export enum AccountStackScreenName {
 // Feed tab screens
 export type FeedStackParamList = {
   Feed: undefined;
+  Post: undefined;
+  CreatePost: undefined;
   Comments: undefined;
 };
 
 export enum FeedStackScreenName {
   FEED = 'Feed',
+  POST = 'Post',
+  CREATE_POST = 'CreatePost',
   COMMENTS = 'Comments'
 }
 

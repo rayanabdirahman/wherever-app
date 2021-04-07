@@ -20,6 +20,9 @@ export { default as SignUpPasswordScreen } from './Account/SignUp/SignUpPassword
 
 // social screens
 export { default as FeedScreen } from './Social/Feed';
+export { default as PostScreen } from './Social/Post';
+export { default as CreatePostScreen } from './Social/CreatePost';
+export { default as CommentsScreen } from './Social/Comments';
 
 // stores screens
 export { default as StoresScreen } from './Stores/Stores';

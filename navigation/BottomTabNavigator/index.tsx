@@ -17,9 +17,12 @@ import {
 import {
   AddressesScreen,
   CartScreen,
+  CommentsScreen,
+  CreatePostScreen,
   FeedScreen,
   OrdersScreen,
   PaymentsScreen,
+  PostScreen,
   ProfileScreen,
   SettingsScreen,
   StoreScreen,
@@ -81,9 +84,19 @@ const FeedNavigator = () => (
       component={FeedScreen}
     />
     <FeedStack.Screen
+      options={{ title: 'Create post' }}
+      name={FeedStackScreenName.CREATE_POST}
+      component={CreatePostScreen}
+    />
+    <FeedStack.Screen
+      options={{ title: 'Post' }}
+      name={FeedStackScreenName.POST}
+      component={PostScreen}
+    />
+    <FeedStack.Screen
       options={{ title: 'Comments' }}
       name={FeedStackScreenName.COMMENTS}
-      component={ProfileScreen}
+      component={CommentsScreen}
     />
   </FeedStack.Navigator>
 );
