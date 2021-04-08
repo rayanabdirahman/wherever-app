@@ -1,6 +1,7 @@
 export default {
   brand: '#FD1241',
-  black: '#14121E',
+  // black: '#14121E',
+  black: '#200E32',
   white: '#FFF',
   blue: '#0001FD',
   green: '#02C698',

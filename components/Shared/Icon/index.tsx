@@ -7,12 +7,17 @@ const Icon = (props: {
   name: string | any;
   color: string;
   type?: string;
+  size?: number;
   style?: StyleProp<TextStyle>;
 }): JSX.Element =>
   props.type === 'Feather' ? (
-    <Feather size={24} style={{ marginBottom: -3 }} {...props} />
+    <Feather size={props.size || 24} style={{ marginBottom: -3 }} {...props} />
   ) : (
-    <AntDesign size={24} style={{ marginBottom: -3 }} {...props} />
+    <AntDesign
+      size={props.size || 24}
+      style={{ marginBottom: -3 }}
+      {...props}
+    />
   );
 
 export default Icon;

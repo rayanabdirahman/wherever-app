@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BackButton, Icon } from '../../components';
+import { BackButton, Icon, NavHeader } from '../../components';
 import Colors from '../../constants/Colors';
 import {
   AccountStackParamList,
@@ -79,7 +79,14 @@ const FeedNavigator = () => (
     screenOptions={ScreenOptions}
   >
     <FeedStack.Screen
-      options={{ headerShown: false }}
+      options={{
+        header: () => (
+          <NavHeader
+            title="Footfall 🔥"
+            subTitle="Activity &amp; purchase orders on workshop"
+          />
+        )
+      }}
       name={FeedStackScreenName.FEED}
       component={FeedScreen}
     />
