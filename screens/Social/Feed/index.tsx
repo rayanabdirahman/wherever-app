@@ -2,6 +2,7 @@ import React from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 import { View, Image } from 'react-native';
 import { lighten } from 'polished';
+import { Ionicons } from '@expo/vector-icons';
 import {
   ScreenContainer,
   ContentContainer,
@@ -70,8 +71,8 @@ const PostImage = (props: Props) => (
   </PostImageContainer>
 );
 
-const Post = ({ username, orderItems, avatar, store }: any) => (
-  <View style={{ marginBottom: 24 }}>
+const Post = ({ username, orderItems, avatar, store, isPrivate }: any) => (
+  <View style={{ marginBottom: 32 }}>
     <View
       style={{
         flexDirection: 'row',
@@ -79,11 +80,28 @@ const Post = ({ username, orderItems, avatar, store }: any) => (
         marginBottom: 16
       }}
     >
-      <Thumbnail
-        source={{
-          uri: avatar
-        }}
-      />
+      {isPrivate ? (
+        <View
+          style={{
+            width: 40,
+            height: 40,
+            backgroundColor: Colors.yellow,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 100
+          }}
+        >
+          <Text lg>🙈</Text>
+        </View>
+      ) : (
+        <Thumbnail
+          small
+          source={{
+            uri: avatar
+          }}
+        />
+      )}
+
       <View style={{ marginLeft: 16, flexGrow: 1 }}>
         <View
           style={{
@@ -93,7 +111,9 @@ const Post = ({ username, orderItems, avatar, store }: any) => (
             justifyContent: 'space-between'
           }}
         >
-          <Text bold>{username}</Text>
+          <Text sm bold>
+            {isPrivate ? 'Someone' : username}
+          </Text>
           <Text xs light>
             2 min ago
           </Text>
@@ -108,20 +128,14 @@ const Post = ({ username, orderItems, avatar, store }: any) => (
             style={{
               width: 20,
               height: 20,
-              backgroundColor: lighten(0.5, Colors.green),
+              backgroundColor: Colors.green,
               borderRadius: 100,
               alignItems: 'center',
               justifyContent: 'center',
               marginRight: 4
             }}
           >
-            <Icon
-              size={14}
-              style={{ margin: 0 }}
-              type="Feather"
-              name="dollar-sign"
-              color={Colors.green}
-            />
+            <Ionicons size={14} name="logo-usd" color={Colors.white} />
           </View>
           <Text light sm>
             Purchased from{' '}
@@ -133,24 +147,80 @@ const Post = ({ username, orderItems, avatar, store }: any) => (
       </View>
     </View>
 
-    <View style={{ flexGrow: 1 }}>
-      <FlatList
-        style={{}}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        scrollEnabled={orderItems.length > 1 && true}
-        data={orderItems}
-        keyExtractor={(post: { _id: string; name: string; image: string }) =>
-          post._id
-        }
-        renderItem={({ item }) => (
-          <PostImage
-            single={orderItems.length > 1 ? false : true}
-            source={{ uri: item.image }}
+    {isPrivate ? null : (
+      <View style={{ flexGrow: 1, marginBottom: 16 }}>
+        <FlatList
+          style={{}}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          scrollEnabled={orderItems.length > 1 && true}
+          data={orderItems}
+          keyExtractor={(post: { _id: string; name: string; image: string }) =>
+            post._id
+          }
+          renderItem={({ item }) => (
+            <PostImage
+              single={orderItems.length > 1 ? false : true}
+              source={{ uri: item.image }}
+            />
+          )}
+        />
+      </View>
+    )}
+
+    {isPrivate ? null : (
+      <View style={{ width: '100%', flexDirection: 'row', marginBottom: 16 }}>
+        <View
+          style={{
+            marginRight: 16,
+            flexDirection: 'row',
+            alignItems: 'center'
+          }}
+        >
+          <Ionicons
+            style={{ marginRight: 8 }}
+            size={24}
+            name="chatbubble-ellipses-outline"
+            color={Colors.darkgrey}
           />
-        )}
-      />
-    </View>
+          <Text style={{ marginBottom: 0 }} sm bold>
+            20
+          </Text>
+        </View>
+        <View
+          style={{
+            marginRight: 16,
+            flexDirection: 'row',
+            alignItems: 'center'
+          }}
+        >
+          <Ionicons
+            style={{ marginRight: 8 }}
+            size={24}
+            name="heart-sharp"
+            color={Colors.red}
+          />
+          <Text style={{ marginBottom: 0 }} sm bold>
+            20
+          </Text>
+        </View>
+      </View>
+    )}
+
+    {isPrivate ? null : (
+      <View
+        style={{
+          marginBottom: 4,
+          flexDirection: 'row',
+          alignItems: 'center'
+        }}
+      >
+        <Text sm bold style={{ marginRight: 4 }}>
+          {username}:
+        </Text>
+        <Text sm> I cant wait to get these!</Text>
+      </View>
+    )}
   </View>
 );
 
@@ -162,18 +232,25 @@ const FeedScreen = ({
 >): JSX.Element => (
   <ScreenContainer>
     <ContentContainer>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Post
+          isPrivate={true}
           username="Brad Gibbson"
           avatar="https://randomuser.me/api/portraits/med/men/78.jpg"
           orderItems={stores}
           store="Footlocker"
         />
         <Post
-          username="John Doe"
+          username="Brad Gibbson"
+          avatar="https://randomuser.me/api/portraits/med/men/78.jpg"
+          orderItems={stores}
+          store="JD Sport"
+        />
+        <Post
+          username="Jane Doe"
           avatar="https://randomuser.me/api/portraits/med/women/76.jpg"
           orderItems={stores2}
-          store="JD Sport"
+          store="Office"
         />
       </ScrollView>
     </ContentContainer>
