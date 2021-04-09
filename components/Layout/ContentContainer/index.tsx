@@ -5,9 +5,9 @@ import styled from 'styled-components/native';
 type Props = DefaultView['props'];
 
 const Container = styled.View<Props>`
-  margin-top: 16px;
-  margin-left: 20px;
-  margin-right: 20px;
+  /* padding-top: 16px; */
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: ${({ theme }) => theme.color.white};
   height: 100%;
 `;
