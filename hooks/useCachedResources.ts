@@ -1,5 +1,5 @@
 import React from 'react';
-import { AntDesign, Feather } from '@expo/vector-icons';
+import { AntDesign, Feather, Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import {
   useFonts,
@@ -26,6 +26,7 @@ export default function useCachedResources(): boolean {
       try {
         // Load fonts
         await Font.loadAsync({
+          ...Ionicons.font,
           ...AntDesign.font,
           ...Feather.font
         });

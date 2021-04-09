@@ -1,6 +1,5 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
 import { BackButton, Icon, NavHeader } from '../../components';
 import Colors from '../../constants/Colors';
 import {
@@ -30,6 +29,7 @@ import {
   StoresScreen
 } from '../../screens';
 import { createStackNavigator } from '@react-navigation/stack';
+import { IconTypeEnum } from '../../components/Shared/Icon';
 
 const ScreenOptions = {
   title: '',
@@ -156,7 +156,11 @@ const BottomTabNavigator = (): JSX.Element => (
       component={FeedNavigator}
       options={{
         tabBarIcon: ({ color }: { color: string }) => (
-          <Ionicons size={24} name="globe-outline" color={color} />
+          <Icon
+            type={IconTypeEnum.IONICONS}
+            name="globe-outline"
+            color={color}
+          />
         )
       }}
     />
@@ -165,7 +169,11 @@ const BottomTabNavigator = (): JSX.Element => (
       component={StoresNavigator}
       options={{
         tabBarIcon: ({ color }: { color: string }) => (
-          <Ionicons size={24} name="search-outline" color={color} />
+          <Icon
+            type={IconTypeEnum.IONICONS}
+            name="search-outline"
+            color={color}
+          />
         )
       }}
     />
@@ -174,7 +182,11 @@ const BottomTabNavigator = (): JSX.Element => (
       component={CartNavigator}
       options={{
         tabBarIcon: ({ color }: { color: string }) => (
-          <Ionicons size={24} name="pricetags-outline" color={color} />
+          <Icon
+            type={IconTypeEnum.IONICONS}
+            name="pricetags-outline"
+            color={color}
+          />
         )
       }}
     />
@@ -183,7 +195,11 @@ const BottomTabNavigator = (): JSX.Element => (
       component={AccountNavigator}
       options={{
         tabBarIcon: ({ color }: { color: string }) => (
-          <Ionicons size={24} name="person-outline" color={color} />
+          <Icon
+            type={IconTypeEnum.IONICONS}
+            name="person-outline"
+            color={color}
+          />
         )
       }}
     />
