@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
 import { BackButton, Icon, NavHeader } from '../../components';
 import Colors from '../../constants/Colors';
 import {
@@ -155,7 +156,7 @@ const BottomTabNavigator = (): JSX.Element => (
       component={FeedNavigator}
       options={{
         tabBarIcon: ({ color }: { color: string }) => (
-          <Icon name="earth" color={color} />
+          <Ionicons size={24} name="globe-outline" color={color} />
         )
       }}
     />
@@ -164,7 +165,7 @@ const BottomTabNavigator = (): JSX.Element => (
       component={StoresNavigator}
       options={{
         tabBarIcon: ({ color }: { color: string }) => (
-          <Icon name="isv" color={color} />
+          <Ionicons size={24} name="search-outline" color={color} />
         )
       }}
     />
@@ -173,7 +174,7 @@ const BottomTabNavigator = (): JSX.Element => (
       component={CartNavigator}
       options={{
         tabBarIcon: ({ color }: { color: string }) => (
-          <Icon type="Feather" name="shopping-bag" color={color} />
+          <Ionicons size={24} name="pricetags-outline" color={color} />
         )
       }}
     />
@@ -182,7 +183,7 @@ const BottomTabNavigator = (): JSX.Element => (
       component={AccountNavigator}
       options={{
         tabBarIcon: ({ color }: { color: string }) => (
-          <Icon name="user" color={color} />
+          <Ionicons size={24} name="person-outline" color={color} />
         )
       }}
     />

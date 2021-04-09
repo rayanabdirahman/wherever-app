@@ -58,7 +58,7 @@ const stores4 = [
     _id: '001',
     name: 'JD Sport',
     image:
-      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjd8fHNuZWFrZXJ8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8c25lYWtlcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
   }
 ];
 
@@ -200,20 +200,6 @@ const Post = ({
             </View>
           )}
 
-          {/* <View
-            style={{
-              width: 20,
-              height: 20,
-              backgroundColor: Colors.green,
-              borderRadius: 100,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginRight: 4
-            }}
-          >
-            <Ionicons size={14} name="logo-usd" color={Colors.white} />
-          </View> */}
-
           {isStore ? (
             <Text light sm>
               Product now {outOfStock ? 'out of stock' : 'in stock'}
@@ -226,12 +212,6 @@ const Post = ({
               </Text>
             </Text>
           )}
-          {/* <Text light sm>
-            Purchased from{' '}
-            <Text sm light bold>
-              {store}
-            </Text>
-          </Text> */}
         </View>
       </View>
     </View>
@@ -307,7 +287,9 @@ const Post = ({
         <Text sm bold style={{ marginRight: 4 }}>
           {username}:
         </Text>
-        <Text sm> I cant wait to get these!</Text>
+        <Text sm>
+          {isStore ? 'Nike AirMax now available!' : 'I cant wait to get these!'}
+        </Text>
       </View>
     )}
   </View>
@@ -341,7 +323,7 @@ const FeedScreen = ({
           outOfStock={true}
           username="Nike"
           avatar="https://c.static-nike.com/a/images/w_1920,c_limit/bzl2wmsfh7kgdkufrrjq/image.jpg"
-          orderItems={stores3}
+          orderItems={stores4}
           store="Office"
         />
         <Post
