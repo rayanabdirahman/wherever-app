@@ -44,6 +44,24 @@ const stores2 = [
   }
 ];
 
+const stores3 = [
+  {
+    _id: '001',
+    name: 'JD Sport',
+    image:
+      'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTY2fHxzbmVha2VyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+  }
+];
+
+const stores4 = [
+  {
+    _id: '001',
+    name: 'JD Sport',
+    image:
+      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjd8fHNuZWFrZXJ8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+  }
+];
+
 type Props = View['props'] &
   Image['props'] & {
     single?: boolean;
@@ -71,7 +89,15 @@ const PostImage = (props: Props) => (
   </PostImageContainer>
 );
 
-const Post = ({ username, orderItems, avatar, store, isPrivate }: any) => (
+const Post = ({
+  username,
+  orderItems,
+  avatar,
+  store,
+  isPrivate,
+  isStore,
+  outOfStock
+}: any) => (
   <View style={{ marginBottom: 32 }}>
     <View
       style={{
@@ -124,7 +150,57 @@ const Post = ({ username, orderItems, avatar, store, isPrivate }: any) => (
             alignItems: 'center'
           }}
         >
-          <View
+          {isStore ? (
+            outOfStock ? (
+              <View
+                style={{
+                  width: 20,
+                  height: 20,
+                  backgroundColor: Colors.red,
+                  borderRadius: 100,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginRight: 8
+                }}
+              >
+                <Ionicons size={14} name="alert-outline" color={Colors.white} />
+              </View>
+            ) : (
+              <View
+                style={{
+                  width: 20,
+                  height: 20,
+                  backgroundColor: Colors.blue,
+                  borderRadius: 100,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginRight: 8
+                }}
+              >
+                <Ionicons
+                  size={14}
+                  name="arrow-up-outline"
+                  color={Colors.white}
+                />
+              </View>
+            )
+          ) : (
+            <View
+              style={{
+                width: 20,
+                height: 20,
+                backgroundColor: Colors.green,
+                borderRadius: 100,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginRight: 8
+              }}
+            >
+              <Ionicons size={14} name="logo-usd" color={Colors.white} />
+            </View>
+          )}
+
+          {/* <View
             style={{
               width: 20,
               height: 20,
@@ -136,13 +212,26 @@ const Post = ({ username, orderItems, avatar, store, isPrivate }: any) => (
             }}
           >
             <Ionicons size={14} name="logo-usd" color={Colors.white} />
-          </View>
-          <Text light sm>
+          </View> */}
+
+          {isStore ? (
+            <Text light sm>
+              Product now {outOfStock ? 'out of stock' : 'in stock'}
+            </Text>
+          ) : (
+            <Text light sm>
+              Purchased from{' '}
+              <Text sm light bold>
+                {store}
+              </Text>
+            </Text>
+          )}
+          {/* <Text light sm>
             Purchased from{' '}
             <Text sm light bold>
               {store}
             </Text>
-          </Text>
+          </Text> */}
         </View>
       </View>
     </View>
@@ -234,11 +323,26 @@ const FeedScreen = ({
     <ContentContainer>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Post
+          isStore={true}
+          username="Footasylum"
+          avatar="https://images.vouchercloud.com/image/upload/w_200,q_auto,fl_strip_profile,f_auto/footasylum_logo_4.jpg"
+          orderItems={stores3}
+          store="Office"
+        />
+        <Post
           isPrivate={true}
           username="Brad Gibbson"
           avatar="https://randomuser.me/api/portraits/med/men/78.jpg"
           orderItems={stores}
           store="Footlocker"
+        />
+        <Post
+          isStore={true}
+          outOfStock={true}
+          username="Nike"
+          avatar="https://c.static-nike.com/a/images/w_1920,c_limit/bzl2wmsfh7kgdkufrrjq/image.jpg"
+          orderItems={stores3}
+          store="Office"
         />
         <Post
           username="Brad Gibbson"
