@@ -4,7 +4,8 @@ import { PostActionType } from '../actions/types';
 
 const initialState: PostState = {
   posts: [],
-  post: null
+  post: null,
+  likedPost: null
 };
 
 export default (state = initialState, action: AnyAction): PostState => {
@@ -16,6 +17,10 @@ export default (state = initialState, action: AnyAction): PostState => {
     case PostActionType.GET_POSTS: {
       const { posts } = action.payload;
       return { ...state, posts };
+    }
+    case PostActionType.UPDATE_LIKES: {
+      const { post } = action.payload;
+      return { ...state, likedPost: post };
     }
     default: {
       return state;

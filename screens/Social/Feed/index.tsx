@@ -17,7 +17,8 @@ import { PostModel } from '../../../domain/interfaces/social';
 import { useSelector } from 'react-redux';
 import { State } from '../../../store';
 import { PostState } from '../../../store/interfaces';
-import usePosts from '../../../hooks/usePosts';
+import usePosts from '../../../hooks/social/usePosts';
+import usePostLike from '../../../hooks/social/usePostLike';
 
 const FeedScreen = ({
   navigation
@@ -26,6 +27,7 @@ const FeedScreen = ({
   FeedStackScreenName.FEED
 >): JSX.Element => {
   const isFetchingComplete = usePosts();
+  const updatePostLikes = usePostLike();
   const { posts } = useSelector<State, PostState>((state) => state.post);
 
   const renderItem = ({ item: post }: { item: PostModel }) => (
@@ -39,8 +41,9 @@ const FeedScreen = ({
       <PostFooter
         username={post.postedBy.username}
         caption={post.content}
+        likeButtonId={post._id}
         likes={post.likes?.length}
-        onLikePress={() => alert('Like pressed!')}
+        onLikePress={() => updatePostLikes(post._id)}
         comments={post.likes?.length}
         onCommentPress={() => navigation.navigate(FeedStackScreenName.COMMENTS)}
       />

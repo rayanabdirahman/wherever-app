@@ -9,6 +9,7 @@ type Props = View['props'] & {
   username: string;
   caption: string;
   likes: number | undefined;
+  likeButtonId: string;
   onLikePress: () => void;
   onCommentPress: () => void;
   comments: number | undefined;
@@ -17,7 +18,11 @@ type Props = View['props'] & {
 const PostFooter = (props: Props): JSX.Element => (
   <Container>
     <View style={{ flexDirection: 'row' }}>
-      <LikeButton onPress={props.onLikePress} likes={props.likes} />
+      <LikeButton
+        _id={props.likeButtonId}
+        onPress={props.onLikePress}
+        likes={props.likes}
+      />
       <CommentButton onPress={props.onCommentPress} comments={props.likes} />
     </View>
     <Caption username={props.username} caption={props.caption} />

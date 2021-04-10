@@ -1,6 +1,6 @@
 import axios from 'axios';
 import buildClient from '../../utilities/axios-helper';
-import { CreatePostModel, PostLikeModel } from '../../domain/interfaces/social';
+import { CreatePostModel } from '../../domain/interfaces/social';
 import { store } from '../../store';
 
 const { apiUrl } = store.getState().config;
@@ -8,7 +8,7 @@ const API_BASE_URL = `${apiUrl}/posts`;
 
 type PostApi = {
   createOne(model: CreatePostModel): Promise<unknown>;
-  likeOne(model: PostLikeModel): Promise<unknown>;
+  likeOne(_id: string): Promise<unknown>;
   findAll(): Promise<unknown>;
 };
 
@@ -21,9 +21,9 @@ const PostApi: PostApi = {
       throw error.response ? error.response.data.error : error.request;
     }
   },
-  async likeOne(model: PostLikeModel): Promise<unknown> {
+  async likeOne(_id: string): Promise<unknown> {
     try {
-      const response = await axios.put(`${API_BASE_URL}/${model._id}/like`);
+      const response = await buildClient().put(`${API_BASE_URL}/${_id}/like`);
       return response.data.data;
     } catch (error) {
       throw error.response ? error.response.data.error : error.request;

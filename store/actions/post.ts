@@ -43,3 +43,22 @@ export const getPosts = () => async (
     );
   }
 };
+
+export const updatePostLike = (_id: string) => async (
+  dispatch: ThunkDispatch<unknown, unknown, AnyAction>
+): Promise<void> => {
+  try {
+    const post = await PostApi.likeOne(_id);
+    dispatch({
+      type: PostActionType.UPDATE_LIKES,
+      payload: post
+    });
+  } catch (error) {
+    dispatch(
+      setAlert({
+        message: error,
+        type: AlertTypeEnum.ERROR
+      })
+    );
+  }
+};

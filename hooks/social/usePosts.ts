@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setIsLoading } from '../store/actions/navigation';
-import { getPosts } from '../store/actions/post';
-import logger from '../utilities/logger';
+import { setIsLoading } from '../../store/actions/navigation';
+import { getPosts } from '../../store/actions/post';
+import logger from '../../utilities/logger';
 
 export default function usePosts(): boolean {
   const dispatch = useDispatch();

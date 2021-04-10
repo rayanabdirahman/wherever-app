@@ -26,4 +26,5 @@ export type SessionState = {
 export type PostState = {
   posts: PostModel[];
   post: PostModel | null;
+  likedPost: PostModel | null;
 };
