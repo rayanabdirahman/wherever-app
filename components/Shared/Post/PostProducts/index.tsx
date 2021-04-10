@@ -31,7 +31,7 @@ const PostProducts = (): JSX.Element => (
 
 const PostImage = (props: Props) => (
   <PostImageContainer {...props}>
-    <PostImageStyles {...props} resizeMode="cover" />
+    <PostImageStyles {...props} resizeMethod="scale" />
   </PostImageContainer>
 );
 
@@ -48,7 +48,7 @@ const PostImageContainer = styled.View<Props>`
   border-radius: 16px;
   margin-right: 8px;
   width: ${({ single }) => (single ? calcWidth : calcWidth / 2)}px;
-  height: ${({ theme }) => theme.layout.window.width / 2.5}px;
+  height: ${({ theme }) => theme.layout.window.width / 3}px;
 `;
 
 export default PostProducts;
