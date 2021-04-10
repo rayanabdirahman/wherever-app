@@ -31,7 +31,7 @@ const LikeButton = (props: Props): JSX.Element => {
       />
       {isLiked ? (
         <Text style={{ marginBottom: 0 }} sm bold>
-          {likeLength}
+          {likeLength || ''}
         </Text>
       ) : null}
     </Button>
