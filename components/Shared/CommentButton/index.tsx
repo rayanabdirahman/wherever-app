@@ -15,7 +15,7 @@ const CommentButton = (props: Props): JSX.Element => (
       type={IconTypeEnum.IONICONS}
       style={{ marginRight: 8 }}
       name="chatbubble-ellipses-outline"
-      color={Colors.darkgrey}
+      color={Colors.black}
     />
     {props.comments ? (
       <Text style={{ marginBottom: 0 }} sm bold>

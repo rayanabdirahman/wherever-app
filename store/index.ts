@@ -5,6 +5,7 @@ import {
   AlertState,
   ConfigState,
   NavigationState,
+  PostState,
   SessionState
 } from './interfaces';
 import rootReducer from './reducers';
@@ -14,6 +15,7 @@ export type State = {
   navigation: NavigationState;
   alert: AlertState;
   session: SessionState;
+  post: PostState;
 };
 
 const middleware = [thunk];

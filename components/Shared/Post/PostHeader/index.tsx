@@ -15,9 +15,9 @@ type Props = TouchableOpacity['props'] &
 const PostStatus = (): JSX.Element => (
   <PostStatusContainer>
     <PurchasedIcon />
-    <Text light sm>
+    <Text sm>
       Purchased from{' '}
-      <Text sm light bold>
+      <Text sm bold>
         Footlocker
       </Text>
     </Text>
@@ -27,8 +27,8 @@ const PostStatus = (): JSX.Element => (
 const PostHeader = (props: Props): JSX.Element => (
   <Container {...props}>
     <Thumbnail
-      style={{ marginRight: 16 }}
       small
+      style={{ marginRight: 16 }}
       source={{ uri: props.avatar }}
     />
     <Details>
@@ -48,7 +48,7 @@ const PostHeader = (props: Props): JSX.Element => (
 const Container = styled.TouchableOpacity<TouchableOpacity['props']>`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   margin-bottom: 16px;
 `;
 

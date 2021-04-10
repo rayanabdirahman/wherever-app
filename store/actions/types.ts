@@ -19,3 +19,8 @@ export enum AccountActionType {
   SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS',
   SIGN_OUT_FAIL = 'SIGN_OUT_FAIL'
 }
+
+export enum PostActionType {
+  CREATE_POST = 'CREATE_POST',
+  GET_POSTS = 'GET_POSTS'
+}

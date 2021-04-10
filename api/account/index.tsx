@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { SignInModel, SignUpModel } from '../domain/interfaces/account';
-import { store } from '../store';
+import { SignInModel, SignUpModel } from '../../domain/interfaces/account';
+import { store } from '../../store';
 
 const { apiUrl } = store.getState().config;
 const API_BASE_URL = `${apiUrl}/accounts`;

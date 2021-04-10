@@ -15,7 +15,7 @@ const LikeButton = (props: Props): JSX.Element => (
       type={IconTypeEnum.IONICONS}
       style={{ marginRight: 8 }}
       name={props.likes ? 'heart-sharp' : 'heart-outline'}
-      color={props.likes ? Colors.red : Colors.darkgrey}
+      color={props.likes ? Colors.red : Colors.black}
     />
     {props.likes ? (
       <Text style={{ marginBottom: 0 }} sm bold>

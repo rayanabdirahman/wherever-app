@@ -13,8 +13,11 @@ import {
   FeedStackScreenName
 } from '../../../navigation/interfaces';
 import { FlatList } from 'react-native-gesture-handler';
-import { Posts } from '../../../sample/posts';
 import { PostModel } from '../../../domain/interfaces/social';
+import { useSelector } from 'react-redux';
+import { State } from '../../../store';
+import { PostState } from '../../../store/interfaces';
+import usePosts from '../../../hooks/usePosts';
 
 const FeedScreen = ({
   navigation
@@ -22,6 +25,9 @@ const FeedScreen = ({
   FeedStackParamList,
   FeedStackScreenName.FEED
 >): JSX.Element => {
+  const isFetchingComplete = usePosts();
+  const { posts } = useSelector<State, PostState>((state) => state.post);
+
   const renderItem = ({ item: post }: { item: PostModel }) => (
     <Post>
       <PostHeader
@@ -44,13 +50,15 @@ const FeedScreen = ({
   return (
     <ScreenContainer>
       <ContentContainer>
-        <FlatList
-          style={{}}
-          showsVerticalScrollIndicator={false}
-          data={Posts}
-          keyExtractor={(post: PostModel) => post._id}
-          renderItem={renderItem}
-        />
+        {isFetchingComplete && (
+          <FlatList
+            style={{}}
+            showsVerticalScrollIndicator={false}
+            data={posts}
+            keyExtractor={(post: PostModel) => post._id}
+            renderItem={renderItem}
+          />
+        )}
       </ContentContainer>
     </ScreenContainer>
   );
