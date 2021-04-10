@@ -6,10 +6,12 @@ import Text from '../../Text';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { UserModel } from '../../../../domain/interfaces/account';
 import PostStatus from '../PostStatus';
+import { timeDifference } from '../../../../utilities/time-difference';
 
 type Props = TouchableOpacity['props'] &
   View['props'] & {
     user: UserModel;
+    timeStamp: string;
   };
 
 const PostHeader = (props: Props): JSX.Element => (
@@ -27,7 +29,7 @@ const PostHeader = (props: Props): JSX.Element => (
         <PostStatus {...props.user.role} />
       </View>
       <Text xs light>
-        2 min ago
+        {timeDifference(new Date(), new Date(props.timeStamp))}
       </Text>
     </Details>
   </Container>

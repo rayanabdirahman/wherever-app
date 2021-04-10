@@ -30,7 +30,11 @@ const FeedScreen = ({
 
   const renderItem = ({ item: post }: { item: PostModel }) => (
     <Post>
-      <PostHeader onPress={() => alert('Go to store')} user={post.postedBy} />
+      <PostHeader
+        onPress={() => alert('Go to store')}
+        user={post.postedBy}
+        timeStamp={post.createdAt}
+      />
       <PostProducts />
       <PostFooter
         username={post.postedBy.username}
