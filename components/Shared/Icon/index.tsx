@@ -1,12 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { AntDesign, Feather, Ionicons } from '@expo/vector-icons';
-import { StyleProp, TextStyle } from 'react-native';
+import { StyleProp, TextStyle, View } from 'react-native';
+import styled from 'styled-components/native';
+import Colors from '../../../constants/Colors';
 
 export enum IconTypeEnum {
   FEATHER = 'Feather',
   IONICONS = 'Ionicons'
 }
+
+const CustomIconContainer = styled.View<View['props']>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  background-color: ${({ theme }) => theme.color.green};
+  margin-right: 8px;
+`;
 
 const Icon = (props: {
   name: string | any;
@@ -26,5 +39,17 @@ const Icon = (props: {
       {...props}
     />
   );
+
+export const PurchasedIcon = (): JSX.Element => (
+  <CustomIconContainer>
+    <Icon
+      type={IconTypeEnum.IONICONS}
+      style={{ margin: 0 }}
+      size={14}
+      name="logo-usd"
+      color={Colors.white}
+    />
+  </CustomIconContainer>
+);
 
 export default Icon;

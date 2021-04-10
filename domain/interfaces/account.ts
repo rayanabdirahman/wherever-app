@@ -6,7 +6,8 @@ export type UserModel = {
   username: string;
   email: string;
   avatar: string;
-  role: UserRolesEnum[];
+  likes: string[];
+  role: UserRolesEnum | string[];
 };
 
 export type SignUpModel = {
