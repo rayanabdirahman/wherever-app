@@ -1,5 +1,5 @@
 // shared components
-export { default as Icon, PurchasedIcon } from './Shared/Icon';
+export { default as Icon } from './Shared/Icon';
 export { default as Spinner } from './Shared/Spinner';
 export { default as BackButton } from './Shared/BackButton';
 export { default as LikeButton } from './Shared/LikeButton';

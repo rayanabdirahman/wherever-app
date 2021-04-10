@@ -2,41 +2,29 @@ import React from 'react';
 import { Thumbnail } from 'native-base';
 import { View } from 'react-native';
 import styled from 'styled-components/native';
-import { PurchasedIcon } from '../../Icon';
 import Text from '../../Text';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { UserModel } from '../../../../domain/interfaces/account';
+import PostStatus from '../PostStatus';
 
 type Props = TouchableOpacity['props'] &
   View['props'] & {
-    username: string;
-    avatar: string;
+    user: UserModel;
   };
-
-const PostStatus = (): JSX.Element => (
-  <PostStatusContainer>
-    <PurchasedIcon />
-    <Text sm>
-      Purchased from{' '}
-      <Text sm bold>
-        Footlocker
-      </Text>
-    </Text>
-  </PostStatusContainer>
-);
 
 const PostHeader = (props: Props): JSX.Element => (
   <Container {...props}>
     <Thumbnail
       small
       style={{ marginRight: 16 }}
-      source={{ uri: props.avatar }}
+      source={{ uri: props.user.avatar }}
     />
     <Details>
       <View>
         <Text sm bold>
-          {props.username}
+          {props.user.username}
         </Text>
-        <PostStatus />
+        <PostStatus {...props.user.role} />
       </View>
       <Text xs light>
         2 min ago
@@ -56,13 +44,6 @@ const Details = styled.View<View['props']>`
   flex-grow: 1;
   flex-direction: row;
   justify-content: space-between;
-`;
-
-const PostStatusContainer = styled.View<View['props']>`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 4px;
 `;
 
 export default PostHeader;
