@@ -48,6 +48,7 @@ const FeedScreen = ({
     []
   );
 
+  // TODO: look into flatlist optimisation
   return (
     <ScreenContainer>
       <ContentContainer>
@@ -57,6 +58,7 @@ const FeedScreen = ({
             showsVerticalScrollIndicator={false}
             data={posts}
             initialNumToRender={20}
+            maxToRenderPerBatch={20}
             keyExtractor={keyExtractor}
             renderItem={renderItem}
             getItemLayout={getItemLayout}
