@@ -27,7 +27,7 @@ const Post = ({ post, onLikePress, onCommentPress }: Props): JSX.Element => (
       likeButtonId={post._id}
       likes={post.likes?.length}
       onLikePress={onLikePress}
-      comments={post.likes?.length}
+      comments={post.comments?.length}
       onCommentPress={onCommentPress}
     />
   </View>

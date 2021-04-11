@@ -1,6 +1,11 @@
 import React from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
-import { ScreenContainer, ContentContainer, Post } from '../../../components';
+import {
+  ScreenContainer,
+  ContentContainer,
+  Post,
+  ScreenHeader
+} from '../../../components';
 import {
   FeedStackParamList,
   FeedStackScreenName
@@ -33,7 +38,11 @@ const FeedScreen = ({
       <Post
         post={post}
         onLikePress={() => updatePostLikes(post._id)}
-        onCommentPress={() => navigation.navigate(FeedStackScreenName.COMMENTS)}
+        onCommentPress={() =>
+          navigation.navigate(FeedStackScreenName.COMMENTS, {
+            productId: post._id
+          })
+        }
       />
     ),
     []
@@ -52,6 +61,10 @@ const FeedScreen = ({
   return (
     <ScreenContainer>
       <ContentContainer>
+        <ScreenHeader
+          title="Footfall 🔥"
+          subTitle="Activity &amp; purchase orders on workshop"
+        />
         {isFetchingComplete && (
           <FlatList
             style={{}}

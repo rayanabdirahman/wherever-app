@@ -4,7 +4,7 @@ export { default as Spinner } from './Shared/Spinner';
 export { default as BackButton } from './Shared/BackButton';
 export { default as LikeButton } from './Shared/LikeButton';
 export { default as CommentButton } from './Shared/CommentButton';
-export { default as NavHeader } from './Shared/NavHeader';
+export { default as ScreenHeader } from './Shared/ScreenHeader';
 export { default as NavTextButton } from './Shared/NavTextButton';
 export { default as Text } from './Shared/Text';
 export { default as Button } from './Shared/Button';

@@ -23,7 +23,7 @@ const PostFooter = (props: Props): JSX.Element => (
         onPress={props.onLikePress}
         likes={props.likes}
       />
-      <CommentButton onPress={props.onCommentPress} comments={props.likes} />
+      <CommentButton onPress={props.onCommentPress} comments={props.comments} />
     </View>
     <Caption username={props.username} caption={props.caption} />
   </Container>
