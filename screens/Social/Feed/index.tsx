@@ -1,13 +1,6 @@
 import React from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
-import {
-  ScreenContainer,
-  ContentContainer,
-  PostFooter,
-  PostHeader,
-  Post,
-  PostProducts
-} from '../../../components';
+import { ScreenContainer, ContentContainer, Post } from '../../../components';
 import {
   FeedStackParamList,
   FeedStackScreenName
@@ -30,24 +23,29 @@ const FeedScreen = ({
   const updatePostLikes = usePostLike();
   const { posts } = useSelector<State, PostState>((state) => state.post);
 
-  const renderItem = ({ item: post }: { item: PostModel }) => (
-    <Post>
-      <PostHeader
-        onPress={() => alert('Go to store')}
-        user={post.postedBy}
-        timeStamp={post.createdAt}
-      />
-      <PostProducts />
-      <PostFooter
-        username={post.postedBy.username}
-        caption={post.content}
-        likeButtonId={post._id}
-        likes={post.likes?.length}
+  const keyExtractor = React.useCallback(
+    (post: PostModel) => post._id.toString(),
+    []
+  );
+
+  const renderItem = React.useCallback(
+    ({ item: post }: { item: PostModel }) => (
+      <Post
+        post={post}
         onLikePress={() => updatePostLikes(post._id)}
-        comments={post.likes?.length}
         onCommentPress={() => navigation.navigate(FeedStackScreenName.COMMENTS)}
       />
-    </Post>
+    ),
+    []
+  );
+
+  const getItemLayout = React.useCallback(
+    (data, index) => ({
+      length: 100,
+      offset: 100 * index,
+      index
+    }),
+    []
   );
 
   return (
@@ -58,8 +56,10 @@ const FeedScreen = ({
             style={{}}
             showsVerticalScrollIndicator={false}
             data={posts}
-            keyExtractor={(post: PostModel) => post._id}
+            initialNumToRender={20}
+            keyExtractor={keyExtractor}
             renderItem={renderItem}
+            getItemLayout={getItemLayout}
           />
         )}
       </ContentContainer>

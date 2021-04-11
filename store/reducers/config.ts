@@ -9,7 +9,7 @@ const initialState: ConfigState = {
     ? PlatformEnvEnum.DEVELOPMENT
     : PlatformEnvEnum.PRODUCTION,
   apiUrl: __DEV__
-    ? 'http://451b5c1bd048.ngrok.io/api/v1'
+    ? 'http://168292a70f98.ngrok.io/api/v1'
     : 'Set Production Api Key'
 };
 
