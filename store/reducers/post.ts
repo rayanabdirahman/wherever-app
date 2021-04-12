@@ -14,6 +14,10 @@ export default (state = initialState, action: AnyAction): PostState => {
       const { post } = action.payload;
       return { ...state, post };
     }
+    case PostActionType.GET_POST: {
+      const { post } = action.payload;
+      return { ...state, post };
+    }
     case PostActionType.GET_POSTS: {
       const { posts } = action.payload;
       return { ...state, posts };

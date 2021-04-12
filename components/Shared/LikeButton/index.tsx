@@ -11,6 +11,7 @@ import Text from '../Text';
 type Props = TouchableOpacity['props'] & {
   _id: string;
   likes: number | undefined;
+  showNumberOfLikes?: boolean | undefined;
 };
 
 const LikeButton = (props: Props): JSX.Element => {
@@ -21,16 +22,18 @@ const LikeButton = (props: Props): JSX.Element => {
       : false;
   const likeLength =
     likedPost?._id === props._id ? likedPost?.likes?.length : props.likes;
+  const showNumberOfLikes =
+    props.showNumberOfLikes === undefined ? true : false;
   return (
     <Button {...props}>
       <Icon
         type={IconTypeEnum.IONICONS}
-        style={{ marginRight: 8 }}
+        style={{ margin: 0 }}
         name={isLiked ? 'heart-sharp' : 'heart-outline'}
         color={isLiked ? Colors.red : Colors.black}
       />
-      {isLiked ? (
-        <Text style={{ marginBottom: 0 }} sm bold>
+      {showNumberOfLikes && isLiked ? (
+        <Text style={{ marginLeft: 8, marginBottom: 0 }} sm bold>
           {likeLength || ''}
         </Text>
       ) : null}
@@ -46,4 +49,4 @@ const Button = styled.TouchableOpacity<Props>`
   margin-bottom: 8px;
 `;
 
-export default LikeButton;
+export default React.memo(LikeButton);

@@ -17,6 +17,7 @@ export { default as Post } from './Shared/Post';
 export { default as PostHeader } from './Shared/Post/PostHeader';
 export { default as PostProducts } from './Shared/Post/PostProducts';
 export { default as PostFooter } from './Shared/Post/PostFooter';
+export { default as Comment } from './Shared/Comment';
 
 // layout components
 export { default as ContentContainer } from './Layout/ContentContainer';

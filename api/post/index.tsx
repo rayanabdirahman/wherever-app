@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios';
 import buildClient from '../../utilities/axios-helper';
 import { CreatePostModel } from '../../domain/interfaces/social';
@@ -9,6 +10,7 @@ const API_BASE_URL = `${apiUrl}/posts`;
 type PostApi = {
   createOne(model: CreatePostModel): Promise<unknown>;
   likeOne(_id: string): Promise<unknown>;
+  findOne(_id: string): Promise<unknown>;
   findAll(): Promise<unknown>;
 };
 
@@ -29,9 +31,17 @@ const PostApi: PostApi = {
       throw error.response ? error.response.data.error : error.request;
     }
   },
+  async findOne(_id: string): Promise<unknown> {
+    try {
+      const response = await buildClient().get(`${API_BASE_URL}/${_id}/`);
+      return response.data.data;
+    } catch (error) {
+      throw error.response ? error.response.data.error : error.request;
+    }
+  },
   async findAll(): Promise<unknown> {
     try {
-      const response = await axios.get(`${API_BASE_URL}`);
+      const response = await buildClient().get(`${API_BASE_URL}`);
       return response.data.data;
     } catch (error) {
       throw error.response ? error.response.data.error : error.request;

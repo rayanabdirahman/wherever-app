@@ -77,7 +77,7 @@ const FeedStack = createStackNavigator<FeedStackParamList>();
 const FeedNavigator = () => (
   <FeedStack.Navigator
     initialRouteName={FeedStackScreenName.FEED}
-    screenOptions={ScreenOptions}
+    screenOptions={{ ...ScreenOptions, headerStyle: { shadowOpacity: 1 } }}
   >
     <FeedStack.Screen
       options={{ headerShown: false }}

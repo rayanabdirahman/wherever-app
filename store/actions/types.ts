@@ -23,5 +23,6 @@ export enum AccountActionType {
 export enum PostActionType {
   CREATE_POST = 'CREATE_POST',
   GET_POSTS = 'GET_POSTS',
+  GET_POST = 'GET_POST',
   UPDATE_LIKES = 'UPDATE_LIKES'
 }

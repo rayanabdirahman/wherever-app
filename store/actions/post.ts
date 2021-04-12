@@ -25,6 +25,25 @@ export const createPost = (model: CreatePostModel) => async (
   }
 };
 
+export const getPost = (_id: string) => async (
+  dispatch: ThunkDispatch<unknown, unknown, AnyAction>
+): Promise<void> => {
+  try {
+    const post = await PostApi.findOne(_id);
+    dispatch({
+      type: PostActionType.GET_POST,
+      payload: { post }
+    });
+  } catch (error) {
+    dispatch(
+      setAlert({
+        message: error,
+        type: AlertTypeEnum.ERROR
+      })
+    );
+  }
+};
+
 export const getPosts = () => async (
   dispatch: ThunkDispatch<unknown, unknown, AnyAction>
 ): Promise<void> => {

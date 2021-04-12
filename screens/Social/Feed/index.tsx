@@ -40,7 +40,7 @@ const FeedScreen = ({
         onLikePress={() => updatePostLikes(post._id)}
         onCommentPress={() =>
           navigation.navigate(FeedStackScreenName.COMMENTS, {
-            productId: post._id
+            postId: post._id
           })
         }
       />

@@ -27,7 +27,7 @@ export const ThumbnailWithText = (props: WithTextProps): JSX.Element => (
     <DefaultThumbnail style={{ marginRight: 16 }} {...props} />
     <View style={{}}>
       {props.heading && (
-        <Text bold style={{ marginBottom: 4 }}>
+        <Text sm bold style={{ marginBottom: 4 }}>
           {props.heading}
         </Text>
       )}

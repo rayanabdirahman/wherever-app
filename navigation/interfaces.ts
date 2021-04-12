@@ -83,7 +83,7 @@ export type FeedStackParamList = {
   Feed: undefined;
   Post: undefined;
   CreatePost: undefined;
-  Comments: { productId: string };
+  Comments: { postId: string };
 };
 
 export enum FeedStackScreenName {

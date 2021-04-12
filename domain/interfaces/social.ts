@@ -11,7 +11,7 @@ export interface PostModel {
   content: string;
   replyTo?: PostModel;
   postedBy: UserModel;
-  comments?: string[];
+  comments?: PostModel[] | string[];
   likes?: string[];
   createdAt: string;
 }
